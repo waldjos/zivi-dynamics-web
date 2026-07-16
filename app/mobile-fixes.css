@@ -1,0 +1,48 @@
+/* Mobile layout correction: hero, menu, brand panel and fixed actions */
+html,body{max-width:100%;overflow-x:hidden}
+
+@media(max-width:1000px){
+  .hero{min-height:auto!important;padding:46px 0 36px!important}
+  .heroGrid{grid-template-columns:1fr!important;gap:28px!important;align-items:start!important}
+  .heroCopy{max-width:none!important}
+  .heroShowcaseVisual{width:100%!important;min-height:0!important;aspect-ratio:1672/941!important;margin-top:8px!important;border-radius:24px!important}
+  .heroShowcaseImage{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important}
+  .section{padding:76px 0!important}
+  .brandBlock{padding-top:28px!important}
+  .brandPanel{grid-template-columns:1fr!important;gap:26px!important;padding:28px!important}
+  .brandPanel>div{padding:0 0 24px!important;border-right:0!important;border-bottom:1px solid var(--line)!important}
+  .brandAsset img{width:min(100%,340px)!important;max-width:340px!important;margin-inline:auto!important}
+  body.menu-open .mobile-actions{display:none!important}
+}
+
+@media(max-width:640px){
+  .container{width:min(100% - 24px,1180px)!important}
+  .site-nav{height:68px!important;gap:10px!important}
+  .site-brand{width:126px!important;height:50px!important;flex-basis:126px!important}
+  .menu-toggle{width:40px!important;height:40px!important;border-radius:11px!important}
+  .mobile-backdrop{background:rgba(1,4,11,.92)!important;backdrop-filter:blur(8px)!important}
+  .mobile-menu{width:100vw!important;max-width:none!important;padding:18px 18px calc(22px + env(safe-area-inset-bottom))!important}
+  .mobile-menu-head{padding-bottom:14px!important}
+  .mobile-menu>a:not(.mobile-primary):not(.mobile-whatsapp){padding:14px 4px!important}
+  .hero{padding:34px 0 30px!important}
+  .hero h1{font-size:clamp(2.55rem,12.5vw,3.45rem)!important;line-height:1.01!important;margin:18px 0!important}
+  .heroCopy>p,.hero .lead{font-size:1rem!important;line-height:1.62!important}
+  .actions{display:grid!important;grid-template-columns:1fr!important;gap:10px!important;margin-top:24px!important}
+  .actions .btn{width:100%!important;min-height:50px!important}
+  .trust{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;margin-top:20px!important}
+  .heroShowcaseVisual{aspect-ratio:16/10!important;margin-top:8px!important;border-radius:18px!important;box-shadow:0 20px 55px rgba(0,0,0,.4)!important}
+  .heroShowcaseImage{object-fit:cover!important;object-position:center!important}
+  .section{padding:58px 0!important}
+  .brandPanel{padding:22px!important;gap:22px!important;border-radius:22px!important}
+  .brandAsset{padding-bottom:18px!important}
+  .brandAsset img{width:min(100%,280px)!important;max-width:280px!important;filter:none!important}
+  .brandPanel h2{font-size:clamp(2rem,10vw,2.75rem)!important;line-height:1.08!important}
+  .brandPanel p{font-size:.98rem!important;line-height:1.7!important}
+  .teamGrid{grid-template-columns:1fr!important}
+  .profile{grid-template-columns:1fr!important;min-height:0!important}
+  .portrait{aspect-ratio:4/5!important;min-height:0!important}
+  .profileText{padding:26px 22px!important}
+  .mobile-actions{bottom:calc(10px + env(safe-area-inset-bottom))!important;width:calc(100% - 20px)!important;max-width:390px!important;padding:5px!important;border-radius:16px!important}
+  .mobile-actions a{min-height:44px!important;font-size:11px!important}
+  .footer{padding-bottom:calc(100px + env(safe-area-inset-bottom))!important}
+}
