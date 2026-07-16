@@ -8,6 +8,7 @@ import "./phase2.css";
 import "./phase3.css";
 import "./legal.css";
 import "./fixes.css";
+import "./mobile-fixes.css";
 import { Header } from "./components/Header";
 import { MobileActions } from "./components/MobileActions";
 
