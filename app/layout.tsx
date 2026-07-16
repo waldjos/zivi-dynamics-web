@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import "./phase1.css";
 import "./phase2.css";
+import "./phase3.css";
 import { Header } from "./components/Header";
 import { MobileActions } from "./components/MobileActions";
 
