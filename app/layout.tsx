@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://zivi-dynamics-web.vercel.app"),
   title: { default: "Zivi Dynamics C.A. | Soluciones Digitales", template: "%s | Zivi Dynamics" },
   description: "Aplicaciones móviles, páginas web, sistemas empresariales, inteligencia artificial y tecnología NFC para empresas y organizaciones.",
-  openGraph: { title: "Zivi Dynamics C.A.", description: "Tecnología que conecta, automatiza y transforma.", images: ["/zivi-social-icon.svg"] },
+  openGraph: { title: "Zivi Dynamics C.A.", description: "Tecnología que conecta, automatiza y transforma.", images: ["/zivi-app-icon.svg"] },
   icons: { icon: "/zivi-app-icon.svg", apple: "/zivi-app-icon.svg" }
 };
 
