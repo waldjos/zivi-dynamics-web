@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import "./globals.css";
 import "./phase1.css";
+import "./phase2.css";
 import { Header } from "./components/Header";
 import { MobileActions } from "./components/MobileActions";
 
