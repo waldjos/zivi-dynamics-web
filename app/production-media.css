@@ -1,0 +1,23 @@
+/* Real production media: NFC and Líder Seguros case study */
+.productionGallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:34px}
+.productionGallery article,.case-media-grid article{overflow:hidden;border:1px solid rgba(110,129,180,.2);border-radius:26px;background:linear-gradient(180deg,rgba(15,23,43,.96),rgba(7,12,24,.99));box-shadow:0 22px 62px rgba(0,0,0,.22)}
+.productionImage,.case-media-image{position:relative;overflow:hidden;background:#070b15}
+.productionImage{aspect-ratio:16/11}
+.productionImage img,.case-media-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+.productionGallery article:hover img,.case-media-grid article:hover img{transform:scale(1.025)}
+.productionGallery article>div:last-child,.case-media-grid article>div:last-child{padding:22px}
+.productionGallery h3,.case-media-grid h3{margin:0 0 9px;font-size:1.22rem}
+.productionGallery p,.case-media-grid p{margin:0;color:var(--muted);line-height:1.7}
+.liderNfcFeature{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:center}
+.liderNfcCopy p,.liderNfcCopy li{color:var(--muted);line-height:1.75}
+.liderNfcCopy ul{padding-left:20px;margin:20px 0 28px;display:grid;gap:8px}
+.liderNfcImage{overflow:hidden;border-radius:28px;border:1px solid rgba(110,129,180,.22);box-shadow:0 26px 70px rgba(0,0,0,.25);background:#fff}
+.liderNfcImage img{width:100%;height:auto;display:block}
+.case-hero-photo{padding:0!important;overflow:hidden;background:#fff!important}
+.case-hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.case-media-section{padding:96px 0;background:linear-gradient(180deg,rgba(9,15,29,.76),rgba(5,9,18,.98));border-top:1px solid rgba(110,129,180,.12);border-bottom:1px solid rgba(110,129,180,.12)}
+.case-media-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:34px}
+.case-media-image{aspect-ratio:16/11}
+.case-media-grid article:nth-child(3) .case-media-image,.case-media-grid article:nth-child(4) .case-media-image{aspect-ratio:4/5}
+@media(max-width:900px){.liderNfcFeature{grid-template-columns:1fr}.productionGallery,.case-media-grid{grid-template-columns:1fr}.case-media-section{padding:72px 0}}
+@media(max-width:600px){.productionGallery{gap:16px}.productionGallery article,.case-media-grid article{border-radius:20px}.productionGallery article>div:last-child,.case-media-grid article>div:last-child{padding:18px}.productionImage{aspect-ratio:4/3}.case-media-image,.case-media-grid article:nth-child(3) .case-media-image,.case-media-grid article:nth-child(4) .case-media-image{aspect-ratio:4/3}.liderNfcImage{border-radius:20px}}
