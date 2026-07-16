@@ -6,6 +6,7 @@ import "./globals.css";
 import "./phase1.css";
 import "./phase2.css";
 import "./phase3.css";
+import "./legal.css";
 import { Header } from "./components/Header";
 import { MobileActions } from "./components/MobileActions";
 
