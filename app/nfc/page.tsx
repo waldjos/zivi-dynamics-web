@@ -58,62 +58,16 @@ const useCases = [
 ] as const;
 
 const officialResources = [
-  {
-    title: "¿Qué es NFC?",
-    source: "NFC Forum",
-    text: "Introducción oficial de la organización que desarrolla los estándares NFC. Explica transacciones, intercambio de contenido y conexión de dispositivos mediante un toque.",
-    href: "https://nfc-forum.org/videos/what-is-nfc/",
-    icon: "play" as IconName,
-    label: "Ver video oficial",
-  },
-  {
-    title: "Biblioteca de videos y casos de uso",
-    source: "NFC Forum",
-    text: "Webinars y demostraciones sobre salud, productos conectados, pasaportes digitales, retail, transporte y otras aplicaciones empresariales.",
-    href: "https://nfc-forum.org/learn/videos/",
-    icon: "play" as IconName,
-    label: "Explorar videos",
-  },
-  {
-    title: "Formación y productos NFC",
-    source: "NXP Semiconductors",
-    text: "Contenido técnico para comprender tags conectados, lectores, NTAG, integración con IoT y selección de soluciones NFC.",
-    href: "https://www.nxp.com/design/design-center/training/TIP-PLAYLIST-NFC-PRODUCTS",
-    icon: "book" as IconName,
-    label: "Abrir formación",
-  },
+  { title: "¿Qué es NFC?", source: "NFC Forum", text: "Introducción oficial de la organización que desarrolla los estándares NFC.", href: "https://nfc-forum.org/videos/what-is-nfc/", icon: "play" as IconName, label: "Ver video oficial" },
+  { title: "Biblioteca de videos y casos de uso", source: "NFC Forum", text: "Webinars y demostraciones sobre salud, productos conectados, retail, transporte y aplicaciones empresariales.", href: "https://nfc-forum.org/learn/videos/", icon: "play" as IconName, label: "Explorar videos" },
+  { title: "Formación y productos NFC", source: "NXP Semiconductors", text: "Contenido técnico sobre tags, lectores, NTAG, IoT y selección de soluciones NFC.", href: "https://www.nxp.com/design/design-center/training/TIP-PLAYLIST-NFC-PRODUCTS", icon: "book" as IconName, label: "Abrir formación" },
 ];
 
-const realMedia = [
-  {
-    title: "Llavero o tag NFC físico",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/93/NFC_tag.jpg",
-    text: "Ejemplo real de un tag NFC encapsulado, similar a los formatos utilizados en llaveros y accesorios.",
-    credit: "Andreas Lakso (Wcis) · CC BY-SA 4.0",
-    source: "https://commons.wikimedia.org/wiki/File:NFC_tag.jpg",
-  },
-  {
-    title: "Sticker NFC adherido a un teléfono",
-    image: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Nfc-tag.jpg",
-    text: "Ejemplo real de un sticker NFC encapsulado y fijado sobre una superficie de uso cotidiano.",
-    credit: "Chafizov · CC BY-SA 4.0",
-    source: "https://commons.wikimedia.org/wiki/File:Nfc-tag.jpg",
-  },
-  {
-    title: "Chip y antena interna de un tag NFC",
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/NFC_Tag_Chip.jpg",
-    text: "Vista real de la antena y el circuito interno que permiten recibir energía y transmitir la información.",
-    credit: "HenryWortel · CC BY-SA 4.0",
-    source: "https://commons.wikimedia.org/wiki/File:NFC_Tag_Chip.jpg",
-  },
+const implementations = [
+  { title: "Llavero NFC aplicado a seguros vehiculares", image: "/media/lider/lider-keychain-car.webp", text: "El asegurado lleva el acceso digital junto a las llaves del vehículo para consultar servicios, asistencia y documentación." },
+  { title: "Entrega combinada con QR y NFC", image: "/media/lider/lider-keychain-package.webp", text: "La solución puede combinar NFC y QR para ofrecer máxima compatibilidad durante la entrega y activación." },
+  { title: "Credenciales empresariales inteligentes", image: "/media/nfc/nfc-credential-techs-sanitized.webp", text: "Credenciales con identidad corporativa, QR y NFC para contacto, seguridad, acceso o información profesional. Los datos personales fueron ocultados para esta muestra." },
 ];
-
-const futureDemos = [
-  ["Tarjeta NFC Zivi", "Perfil profesional, contacto, portafolio y WhatsApp.", "card"],
-  ["Llavero NFC Zivi", "Póliza, asistencia vial, documentos y servicios.", "key"],
-  ["Sticker NFC Zivi", "Wi-Fi, reseña, promoción o ficha de producto.", "sticker"],
-  ["Hablador NFC Zivi", "Menú, catálogo, pedido o atención en mesa.", "store"],
-] as const;
 
 const faqs = [
   ["¿Qué necesita el usuario?", "Un teléfono compatible con NFC y la función activada. La lectura se realiza acercando la zona NFC del teléfono al producto."],
@@ -131,15 +85,15 @@ export default function NfcPage() {
 
     <section className="nfcSection nfcAlt"><div className="container"><div className="nfcHeading"><span className="eyebrow">Cómo funciona</span><h2>Del toque a una acción útil en cuatro pasos.</h2></div><div className="nfcSteps">{steps.map(([number,title,text,icon])=><article key={number}><span className="nfcNumber">{number}</span><div className="nfcIcon"><Icon name={icon}/></div><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 
-    <section className="nfcSection"><div className="container"><div className="nfcHeading"><span className="eyebrow">Videos y formación oficial</span><h2>Demostraciones y recursos de organizaciones especializadas.</h2><p>Estos materiales externos permiten comprender NFC en acción mientras producimos las demostraciones comerciales propias de Zivi.</p></div><div className="nfcResourceGrid">{officialResources.map(resource=><a className="nfcResourceCard" href={resource.href} target="_blank" rel="noreferrer" key={resource.title}><div className="nfcResourceIcon"><Icon name={resource.icon}/></div><span>{resource.source}</span><h3>{resource.title}</h3><p>{resource.text}</p><strong>{resource.label} <Icon name="external"/></strong></a>)}</div></div></section>
+    <section className="nfcSection"><div className="container"><div className="nfcHeading"><span className="eyebrow">Videos y formación oficial</span><h2>Demostraciones y recursos de organizaciones especializadas.</h2><p>Estos materiales permiten comprender la tecnología mientras desarrollamos nuevos videos comerciales propios de Zivi.</p></div><div className="nfcResourceGrid">{officialResources.map(resource=><a className="nfcResourceCard" href={resource.href} target="_blank" rel="noreferrer" key={resource.title}><div className="nfcResourceIcon"><Icon name={resource.icon}/></div><span>{resource.source}</span><h3>{resource.title}</h3><p>{resource.text}</p><strong>{resource.label} <Icon name="external"/></strong></a>)}</div></div></section>
 
-    <section className="nfcSection nfcAlt"><div className="container nfcMotionGrid"><div><span className="eyebrow">Demostración animada</span><h2>Acerca, detecta y abre.</h2><p>Esta simulación muestra la interacción típica: el usuario acerca el teléfono, el dispositivo detecta el chip y abre una experiencia web diseñada para la empresa.</p><ul><li>No necesita escribir direcciones.</li><li>Puede abrirse en el navegador o una aplicación compatible.</li><li>La experiencia puede conectarse con WhatsApp, catálogos y sistemas internos.</li></ul></div><div className="nfcMotion" role="img" aria-label="Demostración animada de una tarjeta NFC acercándose a un teléfono"><div className="motionPhone"><span>Experiencia NFC</span><strong>Contenido detectado</strong><small>Perfil · Menú · WhatsApp</small><b>Abrir</b></div><div className="motionCard"><i/>Zivi NFC<small>Toca aquí</small></div><div className="wave wave1"/><div className="wave wave2"/><div className="wave wave3"/></div></div></section>
+    <section className="nfcSection nfcAlt"><div className="container nfcMotionGrid"><div><span className="eyebrow">Demostración animada</span><h2>Acerca, detecta y abre.</h2><p>El usuario acerca el teléfono, el dispositivo detecta el chip y abre una experiencia web diseñada para la empresa.</p><ul><li>No necesita escribir direcciones.</li><li>Puede abrirse en el navegador o una aplicación compatible.</li><li>Puede conectarse con WhatsApp, catálogos y sistemas internos.</li></ul></div><div className="nfcMotion" role="img" aria-label="Demostración animada de una tarjeta NFC acercándose a un teléfono"><div className="motionPhone"><span>Experiencia NFC</span><strong>Contenido detectado</strong><small>Perfil · Menú · WhatsApp</small><b>Abrir</b></div><div className="motionCard"><i/>Zivi NFC<small>Toca aquí</small></div><div className="wave wave1"/><div className="wave wave2"/><div className="wave wave3"/></div></div></section>
 
-    <section className="nfcSection"><div className="container"><div className="nfcHeading"><span className="eyebrow">NFC en objetos reales</span><h2>Así se ven los tags y sus componentes físicos.</h2><p>Las siguientes fotografías se utilizan con fines educativos bajo licencia Creative Commons y muestran formatos reales de NFC.</p></div><div className="nfcRealGallery">{realMedia.map(media=><article key={media.title}><a href={media.source} target="_blank" rel="noreferrer" className="nfcRealImage"><img src={media.image} alt={media.title} loading="lazy" decoding="async"/></a><div><h3>{media.title}</h3><p>{media.text}</p><small>{media.credit}</small><a href={media.source} target="_blank" rel="noreferrer">Ver fuente y licencia →</a></div></article>)}</div></div></section>
+    <section className="nfcSection nfcImplementationSection"><div className="container"><div className="nfcHeading"><span className="eyebrow">Implementaciones realizadas</span><h2>NFC funcionando en proyectos reales de Zivi.</h2><p>Estas fotografías muestran productos producidos e integrados con portales, aplicaciones y sistemas empresariales.</p></div><div className="productionGallery">{implementations.map(item=><article key={item.title}><div className="productionImage"><img src={item.image} alt={item.title} loading="lazy" decoding="async"/></div><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}</div></div></section>
 
-    <section className="nfcSection nfcAlt"><div className="container"><div className="nfcHeading"><span className="eyebrow">Catálogo NFC</span><h2>Productos que puedes implementar en Venezuela.</h2><p>La personalización visual, el contenido digital y la configuración se adaptan a cada proyecto.</p></div><div className="nfcCatalog">{catalog.map(product=><article key={product.title}><div className="nfcProductMedia"><img src={product.image} alt={product.title}/></div><div className="nfcProductBody"><div className="nfcProductTitle"><Icon name={product.icon}/><h3>{product.title}</h3></div><p>{product.summary}</p><ul>{product.uses.map(use=><li key={use}>{use}</li>)}</ul><strong>Ideal para: {product.ideal}</strong><Link href="/contacto">Cotizar este producto →</Link></div></article>)}</div></div></section>
+    <section className="nfcSection nfcAlt"><div className="container liderNfcFeature"><div className="liderNfcCopy"><span className="eyebrow">Caso destacado · Líder de Seguros</span><h2>Un ecosistema completo: llavero, aplicación y administración.</h2><p>El llavero NFC no funciona de forma aislada. Se conecta con una experiencia digital para asegurados y con un panel administrativo que organiza pólizas, documentos, renovaciones, comisiones, canales de venta y servicios.</p><ul><li>Acceso inmediato desde las llaves del vehículo.</li><li>Aplicación responsive para asegurados.</li><li>Panel administrativo para escritorio y dispositivos móviles.</li><li>Producción personalizada en volumen.</li></ul><Link className="btn" href="/portafolio/lider-seguros-nfc">Ver caso completo →</Link></div><div className="liderNfcImage"><img src="/media/lider/lider-admin-desktop.webp" alt="Panel administrativo conectado con la solución NFC de Líder de Seguros" loading="lazy" decoding="async"/></div></div></section>
 
-    <section className="nfcSection"><div className="container"><div className="nfcHeading"><span className="eyebrow">Próximas demostraciones Zivi</span><h2>La página ya está preparada para nuestros videos propios.</h2><p>Estos módulos serán reemplazados por grabaciones reales de los productos Zivi acercándose a teléfonos Android y iPhone.</p></div><div className="nfcFutureGrid">{futureDemos.map(([title,text,icon])=><article key={title}><div className="nfcFutureVisual"><Icon name={icon}/><span>Video propio próximamente</span></div><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+    <section className="nfcSection"><div className="container"><div className="nfcHeading"><span className="eyebrow">Catálogo NFC</span><h2>Productos que puedes implementar en Venezuela.</h2><p>La personalización visual, el contenido digital y la configuración se adaptan a cada proyecto.</p></div><div className="nfcCatalog">{catalog.map(product=><article key={product.title}><div className="nfcProductMedia"><img src={product.image} alt={product.title}/></div><div className="nfcProductBody"><div className="nfcProductTitle"><Icon name={product.icon}/><h3>{product.title}</h3></div><p>{product.summary}</p><ul>{product.uses.map(use=><li key={use}>{use}</li>)}</ul><strong>Ideal para: {product.ideal}</strong><Link href="/contacto">Cotizar este producto →</Link></div></article>)}</div></div></section>
 
     <section className="nfcSection nfcAlt"><div className="container"><div className="nfcHeading"><span className="eyebrow">Aplicaciones reales</span><h2>¿Cómo puede utilizar NFC tu empresa?</h2></div><div className="nfcUses">{useCases.map(([title,text,icon])=><article key={title}><div className="nfcIcon"><Icon name={icon}/></div><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 
