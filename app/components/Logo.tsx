@@ -3,12 +3,15 @@ import Link from "next/link";
 
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <Link href="/" className="brand" aria-label="Zivi Dynamics C.A. — Inicio">
-      <Image src="/zivi-app-icon.png" alt="" width={compact ? 38 : 44} height={compact ? 38 : 44} className="brandIcon" priority />
-      <span className="brandText">
-        <strong>Zivi</strong>
-        <span>Dynamics C.A.</span>
-      </span>
+    <Link href="/" className={`brand brand-lockup ${compact ? "brand-compact" : ""}`} aria-label="Zivi Dynamics C.A. — Inicio">
+      <Image
+        src="/zivi-logo-light.png"
+        alt="Zivi Dynamics C.A. — Soluciones Digitales"
+        width={1000}
+        height={484}
+        className="brand-logo-image"
+        priority={!compact}
+      />
     </Link>
   );
 }

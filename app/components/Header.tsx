@@ -35,7 +35,7 @@ export function Header() {
   return <header className="site-header">
     <div className="container site-nav">
       <Link href="/" className="site-brand" aria-label="Zivi Dynamics C.A. — Inicio">
-        <img src="/zivi-logo-light.svg" alt="Zivi Dynamics C.A. — Soluciones Digitales" />
+        <img src="/zivi-logo-light.png" alt="Zivi Dynamics C.A. — Soluciones Digitales" />
       </Link>
       <nav className="desktop-menu" aria-label="Navegación principal">
         {links.map(([href,label]) => <Link key={href} href={href} className={active(href) ? "active" : ""} aria-current={active(href) ? "page" : undefined}>{label}</Link>)}
