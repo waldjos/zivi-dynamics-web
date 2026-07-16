@@ -6,7 +6,7 @@ const services=[
   {icon:"systems",title:"Sistemas empresariales",description:"Herramientas robustas para administrar operaciones, usuarios, ventas, pagos y reportes."},
   {icon:"code",title:"Software a la medida",description:"Arquitecturas personalizadas que se adaptan a los procesos y objetivos del negocio."},
   {icon:"ai",title:"Integraciones IA",description:"Asistentes, automatizaciones, análisis y flujos inteligentes conectados con datos reales."},
-  {icon:"nfc",title:"Tecnología NFC",description:"Tarjetas, llaveros y habladores conectados con experiencias digitales medibles."},
+  {icon:"nfc",title:"Tecnología NFC",description:"Tarjetas, llaveros, stickers y habladores conectados con perfiles, catálogos, WhatsApp, Wi-Fi, asistencia y experiencias digitales medibles."},
 ];
 const projects=[
   ["HealthTech","Sociedad Venezolana de Urología","Ecosistema institucional, contenidos científicos y servicios para miembros."],
