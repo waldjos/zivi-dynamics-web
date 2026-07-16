@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import "./phase1.css";
 import "./phase2.css";
@@ -31,8 +33,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <a className="skip-link" href="#contenido">Saltar al contenido principal</a>
     <Header />
     <main id="contenido">{children}</main>
-    <footer className="footer"><div className="container footerGrid"><div><Link className="brand" href="/"><img src="/zivi-logo-light.svg" alt="Zivi Dynamics C.A." /></Link><p>Tecnología que conecta, automatiza y transforma.</p><p>RIF: J-508175123</p></div><div><h4>Contacto</h4><a href="https://wa.me/584127065848">+58 412 706 5848</a><a href="mailto:ziviagency@gmail.com">ziviagency@gmail.com</a><a href="https://instagram.com/zividynamics">@zividynamics</a></div><div><h4>Ubicación</h4><p>San Antonio de los Altos, Miranda, Venezuela</p><Link href="/politica-de-privacidad">Privacidad</Link><Link href="/terminos-y-condiciones">Términos</Link></div></div></footer>
+    <footer className="footer"><div className="container footerGrid"><div><Link className="brand" href="/"><img src="/zivi-logo-light.svg" alt="Zivi Dynamics C.A." /></Link><p>Tecnología que conecta, automatiza y transforma.</p><p>RIF: J-508175123</p></div><div><h4>Explorar</h4><Link href="/servicios">Servicios</Link><Link href="/portafolio">Portafolio</Link><Link href="/recursos">Recursos</Link><Link href="/nosotros">Nosotros</Link></div><div><h4>Contacto</h4><a href="https://wa.me/584127065848">+58 412 706 5848</a><a href="mailto:ziviagency@gmail.com">ziviagency@gmail.com</a><a href="https://instagram.com/zividynamics">@zividynamics</a><p>San Antonio de los Altos, Miranda, Venezuela</p><Link href="/politica-de-privacidad">Privacidad</Link><Link href="/terminos-y-condiciones">Términos</Link></div></div></footer>
     <MobileActions />
+    <Analytics />
+    <SpeedInsights />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
   </body></html>;
 }
