@@ -1,6 +1,6 @@
 {
   "name": "zivi-dynamics-web",
-  "version": "0.1.1",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,18 +9,20 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@vercel/analytics": "latest",
+    "@vercel/speed-insights": "latest",
     "framer-motion": "^12.23.24",
     "next": "16.2.10",
     "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "typescript": "^5"
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.10"
+    "eslint-config-next": "16.2.10",
+    "typescript": "^5"
   },
   "engines": {
     "node": ">=20.9.0"
