@@ -11,6 +11,7 @@ import "./fixes.css";
 import "./mobile-fixes.css";
 import "./service-cards.css";
 import "./nfc-media.css";
+import "./production-media.css";
 import { Header } from "./components/Header";
 import { MobileActions } from "./components/MobileActions";
 
