@@ -1,0 +1,15 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { projects } from "../lib/projects";
+
+export const metadata: Metadata = { title:"Portafolio de proyectos", description:"Casos de software, HealthTech, membresías, seguros, NFC, gastronomía y comercio desarrollados por Zivi Dynamics.", alternates:{canonical:"/portafolio"} };
+
+export default function PortfolioPage(){
+  const sectors = [...new Set(projects.map(project=>project.sector))];
+  return <>
+    <section className="pageHero portfolio-hero"><div className="container"><span className="eyebrow">Portafolio</span><h1>Productos digitales diseñados para operar en el mundo real.</h1><p className="lead">Presentamos el contexto, la solución y las capacidades desarrolladas en proyectos para salud, asociaciones, seguros, movilidad, gastronomía y comercio.</p><div className="portfolio-stats"><div><strong>{projects.length}</strong><span>proyectos documentados</span></div><div><strong>{sectors.length}</strong><span>sectores representados</span></div><div><strong>Web · Apps · IA · NFC</strong><span>capacidades integradas</span></div></div></div></section>
+    <section className="portfolio-section"><div className="container"><div className="portfolio-intro"><div><span className="eyebrow">Experiencia aplicada</span><h2>Cada proyecto parte de una necesidad específica.</h2></div><p>No presentamos plantillas genéricas. Cada caso explica el reto, la solución implementada y las funcionalidades que sostienen la operación.</p></div><div className="case-card-grid">{projects.map((project,index)=><Link href={`/portafolio/${project.slug}`} className="case-card" key={project.slug}><div className="case-card-top"><span>Proyecto {String(index+1).padStart(2,"0")}</span><span>{project.sector}</span></div><div className="case-visual"><strong>{project.name.slice(0,1)}</strong><i/><i/></div><span className="case-category">{project.category}</span><h2>{project.name}</h2><p>{project.summary}</p><div className="case-card-bottom"><span>{project.status}</span><strong>Ver caso →</strong></div></Link>)}</div></div></section>
+    <section className="portfolio-method"><div className="container"><div><span className="eyebrow">Metodología</span><h2>Del diagnóstico a la evolución continua.</h2></div><div className="method-grid"><article><span>01</span><h3>Contexto</h3><p>Comprendemos el proceso, los usuarios y las restricciones reales.</p></article><article><span>02</span><h3>Diseño</h3><p>Definimos experiencia, arquitectura, prioridades y alcance.</p></article><article><span>03</span><h3>Implementación</h3><p>Construimos, probamos y desplegamos la solución.</p></article><article><span>04</span><h3>Evolución</h3><p>Acompañamos mejoras, soporte e integración de nuevas capacidades.</p></article></div></div></section>
+    <section className="section"><div className="container cta"><div><span className="eyebrow">Tu proyecto puede ser el siguiente</span><h2>Convirtamos una necesidad operativa en una solución digital.</h2></div><Link href="/contacto" className="btn">Solicitar diagnóstico</Link></div></section>
+  </>;
+}
