@@ -1,0 +1,19 @@
+{
+  "name": "Zivi Dynamics C.A.",
+  "short_name": "Zivi",
+  "description": "Aplicaciones móviles, páginas web, sistemas, software, inteligencia artificial y tecnología NFC.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050914",
+  "theme_color": "#050914",
+  "lang": "es-VE",
+  "icons": [
+    {
+      "src": "/brand/zivi-app-icon-official.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
