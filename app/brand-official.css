@@ -1,0 +1,68 @@
+/* Official Zivi identity — loaded last to preserve proportions everywhere. */
+.site-brand{
+  width:210px!important;
+  height:70px!important;
+  flex:0 0 210px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  overflow:visible!important;
+}
+.site-brand img{
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+  image-rendering:auto!important;
+}
+.brandAsset{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.brandAsset img,
+.about-brand-panel>img{
+  width:min(100%,470px)!important;
+  height:auto!important;
+  object-fit:contain!important;
+  image-rendering:auto!important;
+}
+.officialFooterBrand{
+  width:min(100%,310px)!important;
+  height:auto!important;
+  display:block!important;
+}
+.officialFooterBrand img{
+  width:100%!important;
+  height:auto!important;
+  object-fit:contain!important;
+  image-rendering:auto!important;
+}
+
+@media(max-width:1000px){
+  .site-brand{
+    width:184px!important;
+    height:62px!important;
+    flex-basis:184px!important;
+  }
+  .brandAsset img,
+  .about-brand-panel>img{
+    width:min(100%,410px)!important;
+  }
+}
+
+@media(max-width:650px){
+  .site-brand{
+    width:148px!important;
+    height:54px!important;
+    flex-basis:148px!important;
+  }
+  .brandAsset img,
+  .about-brand-panel>img{
+    width:min(100%,320px)!important;
+  }
+  .officialFooterBrand{
+    width:min(100%,250px)!important;
+  }
+}
