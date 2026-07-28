@@ -32,7 +32,7 @@ const capabilities = [
   },
 ] as const;
 
-const featuredSlugs = ["uroapp", "congreso-urologia-2026", "lider-seguros-nfc", "soveuroapp"];
+const featuredSlugs = ["uroapp", "fc-care-ai", "lider-seguros-nfc", "congreso-urologia-2026"];
 const featuredProjects = featuredSlugs
   .map((slug) => projects.find((project) => project.slug === slug))
   .filter((project): project is NonNullable<typeof project> => Boolean(project));
