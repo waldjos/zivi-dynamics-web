@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExperienceLayer } from "../components/ExperienceLayer";
 import { NfcSignalDemo } from "../components/NfcSignalDemo";
+import { ZiviMark } from "../components/ZiviMark";
 
 export const metadata: Metadata = {
   title: "Soluciones y productos NFC para empresas en Venezuela",
@@ -163,7 +164,7 @@ export default function NfcPage() {
         <div className="container nfcCredentialCaseGrid">
           <div className="nfcCredentialVisual" data-reveal>
             <Image
-              src="/projects/adium-smart-credential.png"
+              src="/projects/adium-smart-credential-v2.png"
               alt="Solución de carnet inteligente NFC, lanyard y portacarnet para Adium"
               fill
               sizes="(max-width: 900px) 100vw, 56vw"
@@ -228,7 +229,7 @@ export default function NfcPage() {
             {formats.map((format, index) => (
               <article key={format.key} className={`nfcFormatCard format-${format.key}`} data-reveal>
                 <div className="formatCardTop"><span>0{index + 1}</span><small>NTAG / READY</small></div>
-                <div className="formatObject" aria-hidden="true"><i /><span>Z</span></div>
+                <div className="formatObject" aria-hidden="true"><i /><ZiviMark className="formatObjectMark" /></div>
                 <h3>{format.title}</h3>
                 <p>{format.line}</p>
                 <div className="formatUses">{format.uses.map((use) => <span key={use}>{use}</span>)}</div>
