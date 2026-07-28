@@ -1,0 +1,28 @@
+.brandLockupMark{
+  overflow:visible;
+  shape-rendering:geometricPrecision;
+}
+.brandLockupName .brandI{
+  position:relative;
+  display:inline-block;
+  color:inherit;
+}
+.brandLockupName .brandDot{
+  position:absolute;
+  z-index:1;
+  top:.015em;
+  left:50%;
+  width:.14em;
+  height:.14em;
+  border-radius:50%;
+  transform:translate(-50%,-72%);
+  box-shadow:0 0 .18em currentColor;
+}
+.brandLockupName .brandDotBlue{
+  color:#17bdf2;
+  background:#17bdf2;
+}
+.brandLockupName .brandDotPink{
+  color:#f50078;
+  background:#f50078;
+}
