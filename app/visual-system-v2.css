@@ -626,3 +626,102 @@ main :where(h1,h2,h3,blockquote){
   }
   .nfcSignalDemo{transform:none}
 }
+
+/* Sectorized trust network: logos remain intact while each relationship has context. */
+.trustPartnerGroups{
+  position:relative;
+  display:grid;
+  gap:28px;
+}
+.trustPartnerGroup{
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(0,0,0,.2);
+}
+.trustPartnerGroupHead{
+  display:grid;
+  grid-template-columns:50px minmax(0,1fr) minmax(240px,.72fr);
+  align-items:center;
+  gap:20px;
+  min-height:92px;
+  padding:18px 24px;
+  border-bottom:1px solid rgba(255,255,255,.18);
+  background:rgba(8,8,8,.82);
+}
+.trustPartnerGroupHead>span{
+  color:var(--epic-cyan);
+  font:800 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.15em;
+}
+.trustPartnerGroupHead>div{
+  display:grid;
+  gap:7px;
+}
+.trustPartnerGroupHead small{
+  color:var(--epic-pink);
+  font:800 8px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.trustPartnerGroupHead strong{
+  font-size:clamp(1.25rem,2.1vw,2rem);
+  line-height:1;
+}
+.trustPartnerGroupHead p{
+  margin:0;
+  color:rgba(255,255,255,.5);
+  font-size:.82rem;
+  line-height:1.55;
+}
+.trustPartnerGroup .partnerLogoGrid{border:0}
+.partnerLogoGrid-medical{grid-template-columns:repeat(3,minmax(0,1fr))}
+.partnerLogoGrid-insurance{grid-template-columns:repeat(2,minmax(0,1fr))}
+.partnerLogoCard-wide img{
+  height:92px;
+  padding:4px;
+}
+.partnerLogoCard-badge img{height:138px}
+.partnerLogoCard-dark{
+  background:#050505;
+  color:#fff;
+}
+.partnerLogoCard-dark:hover{background:#101010}
+.partnerLogoCard-dark img{
+  height:150px;
+  filter:saturate(1) contrast(1.03);
+}
+.partnerLogoCard-dark>span,
+.partnerLogoCard-dark small{color:rgba(255,255,255,.62)}
+
+@media(max-width:820px){
+  .trustPartnerGroupHead{
+    grid-template-columns:40px minmax(0,1fr);
+    gap:14px;
+  }
+  .trustPartnerGroupHead p{
+    grid-column:2;
+    max-width:520px;
+  }
+  .partnerLogoGrid-medical,
+  .partnerLogoGrid-insurance{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:650px){
+  .trustPartnerGroups{gap:22px}
+  .trustPartnerGroupHead{
+    grid-template-columns:28px minmax(0,1fr);
+    padding:18px 15px;
+  }
+  .trustPartnerGroupHead strong{font-size:1.35rem}
+  .partnerLogoGrid-insurance{grid-template-columns:1fr}
+  .partnerLogoCard-wide img{height:82px}
+  .partnerLogoCard-badge img{height:112px}
+  .partnerLogoCard-dark img{height:124px}
+}
+
+@media(max-width:390px){
+  .partnerLogoGrid-medical{grid-template-columns:1fr}
+  .partnerLogoGrid-medical .partnerLogoCard{min-height:176px}
+  .partnerLogoCard-wide img{height:76px}
+  .partnerLogoCard-badge img,
+  .partnerLogoCard-dark img{height:108px}
+}

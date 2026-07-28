@@ -47,13 +47,68 @@ const healthNetwork = [
   "Clínicas Caracas",
   "Sociedad Venezolana de Urología",
   "Sociedad Venezolana de Cardiología",
+  "Servicio de Urología Oncológica — IVSS",
 ] as const;
 
-const partnerLogos = [
-  { name: "Adium", image: "/clients/adium.png", tone: "ink" },
-  { name: "Zoriak Pharma", image: "/clients/zoriak.png", tone: "color" },
-  { name: "FC Pharma", image: "/clients/fc-pharma.png", tone: "color" },
-  { name: "UroGastrol", image: "/clients/urogastrol.png", tone: "color" },
+const trustLogoGroups = [
+  {
+    eyebrow: "Salud / Industria",
+    title: "Laboratorios y aliados",
+    note: "Iniciativas clínicas, jornadas y experiencias digitales.",
+    layout: "labs",
+    logos: [
+      { name: "Adium", image: "/clients/adium.png", tone: "ink", fit: "standard" },
+      { name: "Zoriak Pharma", image: "/clients/zoriak.png", tone: "color", fit: "standard" },
+      { name: "FC Pharma", image: "/clients/fc-pharma.png", tone: "color", fit: "standard" },
+      { name: "UroGastrol", image: "/clients/urogastrol.png", tone: "color", fit: "standard" },
+    ],
+  },
+  {
+    eyebrow: "Salud / Ciencia",
+    title: "Instituciones y sociedades",
+    note: "Ecosistemas para especialistas, membresías y atención médica.",
+    layout: "medical",
+    logos: [
+      {
+        name: "Unidad Urológica Avanzada de Caracas",
+        image: "/clients/unidad-urologica-avanzada-logo.png",
+        tone: "color",
+        fit: "wide",
+      },
+      {
+        name: "Sociedad Venezolana de Cardiología",
+        image: "/clients/sociedad-venezolana-cardiologia-logo.png",
+        tone: "color",
+        fit: "badge",
+      },
+      {
+        name: "Servicio de Urología Oncológica — IVSS",
+        image: "/clients/servicio-urologia-oncologica-ivss.jpg",
+        tone: "dark",
+        fit: "badge",
+      },
+    ],
+  },
+  {
+    eyebrow: "Empresas / Movilidad",
+    title: "Seguros y asistencia",
+    note: "Productos digitales, portales y experiencias NFC para vehículos.",
+    layout: "insurance",
+    logos: [
+      {
+        name: "Líder de Seguros para Vehículos",
+        image: "/clients/lider-seguros-logo.png",
+        tone: "color",
+        fit: "wide",
+      },
+      {
+        name: "Atlántida Sociedad de Corretaje de Seguros",
+        image: "/clients/atlantida-seguros-logo.png",
+        tone: "color",
+        fit: "wide",
+      },
+    ],
+  },
 ] as const;
 
 export default function Home() {
@@ -152,28 +207,49 @@ export default function Home() {
       <section className="trustNetwork">
         <div className="container">
           <div className="trustNetworkIntro" data-reveal>
-            <span className="epicEyebrow">Red de confianza / Salud</span>
+            <span className="epicEyebrow">Red de confianza / Sectores</span>
             <h2>Tecnología que entra donde <em>el trabajo importa.</em></h2>
             <p>
               Hemos colaborado con sociedades científicas, instituciones médicas
-              y laboratorios en iniciativas digitales, plataformas clínicas,
-              jornadas y experiencias para eventos.
+              y laboratorios, además de organizaciones de seguros y movilidad,
+              en plataformas, jornadas y experiencias digitales.
             </p>
           </div>
 
-          <div className="partnerLogoGrid" data-reveal>
-            {partnerLogos.map((partner, index) => (
-              <div className={`partnerLogoCard partnerLogoCard-${partner.tone}`} key={partner.name}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <Image
-                  src={partner.image}
-                  alt={`Logo de ${partner.name}`}
-                  width={300}
-                  height={140}
-                  sizes="(max-width: 650px) 50vw, 240px"
-                />
-                <small>{partner.name}</small>
-              </div>
+          <div className="trustPartnerGroups">
+            {trustLogoGroups.map((group, groupIndex) => (
+              <section className="trustPartnerGroup" key={group.title} data-reveal>
+                <header className="trustPartnerGroupHead">
+                  <span>{String(groupIndex + 1).padStart(2, "0")}</span>
+                  <div>
+                    <small>{group.eyebrow}</small>
+                    <strong>{group.title}</strong>
+                  </div>
+                  <p>{group.note}</p>
+                </header>
+                <div className={`partnerLogoGrid partnerLogoGrid-${group.layout}`}>
+                  {group.logos.map((partner, index) => (
+                    <div
+                      className={`partnerLogoCard partnerLogoCard-${partner.tone} partnerLogoCard-${partner.fit}`}
+                      key={partner.name}
+                    >
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <Image
+                        src={partner.image}
+                        alt={`Logo de ${partner.name}`}
+                        width={520}
+                        height={260}
+                        sizes={
+                          group.layout === "insurance"
+                            ? "(max-width: 650px) 92vw, 520px"
+                            : "(max-width: 650px) 46vw, 320px"
+                        }
+                      />
+                      <small>{partner.name}</small>
+                    </div>
+                  ))}
+                </div>
+              </section>
             ))}
           </div>
 
