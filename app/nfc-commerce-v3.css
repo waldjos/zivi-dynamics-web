@@ -1,81 +1,89 @@
 /* Zivi identity and NFC commerce system v3 */
 
-/* A flatter, sharper identity: no diamond, glass frame or gradient fill. */
+/* Restored official Zivi ribbon: high-resolution mark plus live, scalable type. */
 .ziviMonogram{
-  --zivi-flat-cyan:#00c9e8;
-  --zivi-flat-gold:#ffbd20;
   position:relative;
-  display:inline-grid;
+  display:inline-flex;
   width:72px;
   height:72px;
-  isolation:isolate;
   flex:0 0 auto;
-  place-items:center;
-  aspect-ratio:1;
-  filter:none;
+  align-items:center;
+  justify-content:center;
+  overflow:visible;
+  line-height:0;
 }
-.ziviMonogramFrame,
-.ziviMonogramGlyph{
-  position:absolute;
-  inset:17% 12%;
-  border:0;
-  border-radius:0;
-  clip-path:polygon(0 0,100% 0,100% 24%,38% 75%,100% 75%,100% 100%,0 100%,0 76%,62% 24%,0 24%);
-}
-.ziviMonogramFrame{
-  background:var(--zivi-flat-cyan);
-  box-shadow:none;
-  transform:none;
-  translate:4px -4px;
-  opacity:.9;
-}
-.ziviMonogramFrame::before,
-.ziviMonogramFrame::after{
-  display:none;
-}
-.ziviMonogramGlyph{
-  z-index:2;
-  background:#f7f5ef;
-  filter:drop-shadow(0 8px 13px rgba(0,0,0,.34));
-}
-.ziviMonogramGlyph::after{
-  display:none;
-}
-.ziviMonogramPulse{
-  position:absolute;
-  z-index:3;
-  right:5%;
-  bottom:10%;
-  width:13%;
-  height:13%;
-  inset:auto 5% 10% auto;
-  border-radius:1px;
-  background:var(--zivi-flat-gold);
-  box-shadow:0 0 14px rgba(255,189,32,.45);
+.ziviMonogramImage{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  image-rendering:auto;
+  filter:
+    drop-shadow(0 9px 12px rgba(0,0,0,.42))
+    drop-shadow(0 0 9px rgba(0,201,232,.12));
+  transform:translateZ(0);
 }
 .brandLockup{
-  gap:12px;
+  gap:clamp(9px,1.2vw,15px);
 }
 .brandLockupName{
-  font-weight:950;
-  letter-spacing:.13em;
+  display:flex;
+  align-items:baseline;
+  color:#f8f8f5;
+  font-family:Arial Black,Inter,Arial,Helvetica,sans-serif;
+  font-weight:900;
+  letter-spacing:-.085em;
+  line-height:.82;
+  text-transform:none;
+  text-shadow:0 5px 16px rgba(0,0,0,.42);
+}
+.brandLockupName .brandI{
+  position:relative;
+  display:inline-block;
+  color:inherit;
+}
+.brandLockupName .brandIStem{
+  display:inline-block;
+  color:inherit;
+}
+.brandLockupName .brandDot{
+  position:absolute;
+  z-index:2;
+  top:-.09em;
+  left:50%;
+  width:.145em;
+  height:.145em;
+  border-radius:50%;
+  transform:translateX(-50%);
+}
+.brandLockupName .brandDotBlue{
+  background:#159eea;
+  box-shadow:0 0 .16em rgba(21,158,234,.48);
+}
+.brandLockupName .brandDotPink{
+  background:#ef008c;
+  box-shadow:0 0 .16em rgba(239,0,140,.48);
 }
 .brandLockupCompany{
-  margin-top:5px;
-  color:rgba(255,255,255,.68);
-  letter-spacing:.18em;
+  margin-top:8px;
+  color:rgba(244,244,250,.82);
+  font-weight:520;
+  letter-spacing:.045em;
+  text-transform:none;
 }
 .brandLockupTagline{
-  border-color:rgba(255,255,255,.2);
-  background:none;
-  color:var(--zivi-flat-cyan);
-  -webkit-text-fill-color:currentColor;
-  letter-spacing:.25em;
+  border-color:rgba(255,255,255,.22);
+  background:linear-gradient(90deg,#ed00a2 0%,#8845ef 48%,#168cf0 100%);
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  letter-spacing:.28em;
 }
-.signalBrandMark .ziviMonogramFrame{
-  background:var(--zivi-flat-cyan);
-  border:0;
-  transform:none;
+.signalBrandMark .ziviMonogramImage{
+  filter:
+    drop-shadow(0 10px 12px rgba(0,0,0,.48))
+    drop-shadow(0 0 12px rgba(0,201,232,.23));
 }
 
 /* Photographic NFC demonstration */
@@ -184,8 +192,7 @@
   width:19px;
   height:19px;
 }
-.nfcProbeMark .ziviMonogramFrame{translate:1px -1px}
-.nfcProbeMark .ziviMonogramGlyph{filter:none}
+.nfcProbeMark .ziviMonogramImage{filter:drop-shadow(0 2px 3px rgba(0,0,0,.42))}
 .nfcPhotoRoute{
   position:absolute;
   z-index:5;

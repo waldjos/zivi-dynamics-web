@@ -70,9 +70,9 @@ export const metadata: Metadata = {
     images: ["/og.png"],
   },
   icons: {
-    icon: [{ url: "/brand/zivi-app-icon-official.png", sizes: "192x192", type: "image/png" }],
-    apple: [{ url: "/brand/zivi-app-icon-official.png", sizes: "192x192", type: "image/png" }],
-    shortcut: "/brand/zivi-app-icon-official.png",
+    icon: [{ url: "/brand/zivi-app-icon-real-v2.png", sizes: "1024x1024", type: "image/png" }],
+    apple: [{ url: "/brand/zivi-app-icon-real-v2.png", sizes: "1024x1024", type: "image/png" }],
+    shortcut: "/brand/zivi-app-icon-real-v2.png",
   },
   manifest: "/manifest.webmanifest",
 };
@@ -84,7 +84,7 @@ const organization = {
   legalName: "Zivi Dynamics C.A.",
   taxID: "J-508175123",
   url: siteUrl,
-  logo: `${siteUrl}/brand/zivi-app-icon-official.png`,
+  logo: `${siteUrl}/brand/zivi-mark-real-v2.png`,
   image: `${siteUrl}/og.png`,
   email: "ziviagency@gmail.com",
   telephone: "+58 412 706 5848",
