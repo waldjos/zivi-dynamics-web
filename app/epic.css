@@ -810,6 +810,20 @@ body{
 .epicFooter h4{font:700 9px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--epic-cyan)}
 .epicFooter a{transition:color .2s ease}
 .epicFooter a:hover{color:#fff}
+.epicFooter .footerLinkHub{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  margin:0 0 18px;
+  padding:13px 14px;
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(255,255,255,.04);
+  color:var(--epic-white);
+  font-weight:800;
+}
+.epicFooter .footerLinkHub:hover{border-color:var(--epic-cyan);background:rgba(0,191,243,.08)}
+.epicFooter .footerLinkHub span{display:inline;color:var(--epic-cyan);margin:0;font-size:16px}
 .epicFooter .footerLocation{margin-top:34px;font:700 9px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;text-transform:uppercase;color:rgba(255,255,255,.42)}
 
 /* Portfolio index */
