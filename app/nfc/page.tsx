@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExperienceLayer } from "../components/ExperienceLayer";
 import { NfcSignalDemo } from "../components/NfcSignalDemo";
-import { ZiviMark } from "../components/ZiviMark";
 
 export const metadata: Metadata = {
   title: "Soluciones y productos NFC para empresas en Venezuela",
@@ -39,24 +38,36 @@ const formats = [
     key: "card",
     title: "Tarjetas",
     line: "Identidad profesional y comercial",
+    image: "/media/nfc-commerce/contactless-card-pexels.png",
+    alt: "Tarjeta contactless acercándose a un terminal de pago en un comercio",
+    spec: "PVC / NTAG 21X",
     uses: ["Perfil digital", "Catálogo", "Contacto", "Credenciales"],
   },
   {
     key: "keychain",
     title: "Llaveros",
     line: "Servicios que acompañan al usuario",
+    image: "/media/lider/lider-keychain-car-hq.png",
+    alt: "Llavero NFC real conectado con asistencia vehicular",
+    spec: "ABS / EPOXY",
     uses: ["Seguros", "Vehículos", "Acceso", "Membresías"],
   },
   {
     key: "sticker",
     title: "Stickers",
     line: "Cualquier superficie se vuelve interactiva",
+    image: "/media/nfc-commerce/nfc-tag-chip-wikimedia.png",
+    alt: "Fotografía macro de una etiqueta NFC y su antena interna",
+    spec: "13.56 MHZ / NDEF",
     uses: ["Wi-Fi", "Reseñas", "Soporte", "Campañas"],
   },
   {
     key: "talker",
     title: "Habladores",
     line: "Un punto de acción en mesa o mostrador",
+    image: "/media/nfc-commerce/nfc-table-talker-wikimedia.png",
+    alt: "Punto físico con acceso QR en una mesa comercial",
+    spec: "MESA / MOSTRADOR",
     uses: ["Menús", "Pedidos", "Pagos", "Encuestas"],
   },
 ] as const;
@@ -229,7 +240,17 @@ export default function NfcPage() {
             {formats.map((format, index) => (
               <article key={format.key} className={`nfcFormatCard format-${format.key}`} data-reveal>
                 <div className="formatCardTop"><span>0{index + 1}</span><small>NTAG / READY</small></div>
-                <div className="formatObject" aria-hidden="true"><i /><ZiviMark className="formatObjectMark" /></div>
+                <div className="formatObjectPhoto">
+                  <Image
+                    src={format.image}
+                    alt={format.alt}
+                    fill
+                    sizes="(max-width: 760px) 100vw, 25vw"
+                    quality={94}
+                  />
+                  <span className="formatPhotoSpec">{format.spec}</span>
+                  <span className="formatTapBadge"><i /><b>TAP</b></span>
+                </div>
                 <h3>{format.title}</h3>
                 <p>{format.line}</p>
                 <div className="formatUses">{format.uses.map((use) => <span key={use}>{use}</span>)}</div>
@@ -239,6 +260,56 @@ export default function NfcPage() {
           <div className="nfcFormatFoot" data-reveal>
             <p>Personalización por volumen, identidad visual y experiencia digital según el caso.</p>
             <a href="https://wa.me/584127065848?text=Hola,%20quiero%20cotizar%20productos%20NFC%20personalizados.">Consultar formatos y cantidades →</a>
+          </div>
+          <details className="nfcPhotoCredits">
+            <summary>Créditos de fotografía</summary>
+            <p>
+              Comercio: <a href="https://www.pexels.com/photo/close-up-of-paying-with-card-4393427/" target="_blank" rel="noreferrer">Norma Mortenson / Pexels</a>.
+              Etiqueta NFC: <a href="https://commons.wikimedia.org/wiki/File:NFC_Tag_Chip.jpg" target="_blank" rel="noreferrer">HenryWortel / CC BY-SA 4.0</a>.
+              Punto de mesa: <a href="https://commons.wikimedia.org/wiki/File:Table_bench_QR_Code_at_the_Madurodam,_The_Hague_(2023)_01.jpg" target="_blank" rel="noreferrer">Donald Trung / CC BY-SA 4.0</a>.
+              Las imágenes se presentan recortadas para el formato editorial.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section className="nfcCommerceLab">
+        <div className="container nfcCommerceLabGrid">
+          <figure className="nfcCommercePhoto" data-reveal>
+            <Image
+              src="/media/nfc-commerce/contactless-commerce-pexels.png"
+              alt="Interacción NFC real mediante un teléfono y un terminal comercial"
+              fill
+              sizes="(max-width: 900px) 100vw, 55vw"
+              quality={94}
+            />
+            <figcaption>
+              <span>COMERCIO / NFC</span>
+              <strong>El toque ocurre en el mundo real.</strong>
+            </figcaption>
+          </figure>
+          <div className="nfcCommerceCopy" data-reveal>
+            <span className="epicEyebrow">NFC para comercio</span>
+            <h2>Cada superficie puede convertirse en un punto de venta.</h2>
+            <p>
+              Una mesa, vitrina, empaque o tarjeta puede abrir la acción correcta
+              sin obligar al cliente a buscar, escribir o instalar una aplicación.
+            </p>
+            <div className="nfcCommerceActions">
+              <article><span>01</span><strong>Ver menú o catálogo</strong><small>Contenido editable en tiempo real</small></article>
+              <article><span>02</span><strong>Comprar o reservar</strong><small>Menos pasos hasta la conversión</small></article>
+              <article><span>03</span><strong>Guardar el contacto</strong><small>WhatsApp, perfil y ubicación</small></article>
+              <article><span>04</span><strong>Medir la interacción</strong><small>Aperturas, campañas y destinos</small></article>
+            </div>
+            <a
+              className="nfcCommerceCta"
+              href="https://wa.me/584127065848?text=Hola%20Zivi%20Dynamics,%20quiero%20activar%20NFC%20en%20mi%20comercio."
+            >
+              Activar un punto comercial <span>↗</span>
+            </a>
+            <small className="nfcCommerceCredit">
+              Fotografía: <a href="https://www.pexels.com/photo/a-close-up-shot-of-a-person-holding-a-payment-terminal-12935072/" target="_blank" rel="noreferrer">iMin Technology / Pexels</a>
+            </small>
           </div>
         </div>
       </section>
