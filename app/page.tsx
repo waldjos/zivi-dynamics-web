@@ -32,12 +32,29 @@ const capabilities = [
   },
 ] as const;
 
-const featuredSlugs = ["lider-seguros-nfc", "soveuro", "pacigest-plus", "mesaclick"];
+const featuredSlugs = ["uroapp", "congreso-urologia-2026", "lider-seguros-nfc", "soveuroapp"];
 const featuredProjects = featuredSlugs
   .map((slug) => projects.find((project) => project.slug === slug))
   .filter((project): project is NonNullable<typeof project> => Boolean(project));
 
 const sectors = [...new Set(projects.map((project) => project.sector))];
+
+const healthNetwork = [
+  "Unidad Urológica Avanzada Las Acacias",
+  "Hospital Dr. Domingo Luciani",
+  "Hospital Padre Machado",
+  "Centro Médico Docente La Trinidad",
+  "Clínicas Caracas",
+  "Sociedad Venezolana de Urología",
+  "Sociedad Venezolana de Cardiología",
+] as const;
+
+const partnerLogos = [
+  { name: "Adium", image: "/clients/adium.png" },
+  { name: "Zoriak Pharma", image: "/clients/zoriak.png" },
+  { name: "FC Pharma", image: "/clients/fc-pharma.png" },
+  { name: "UroGastrol", image: "/clients/urogastrol.png" },
+] as const;
 
 export default function Home() {
   return (
@@ -126,6 +143,55 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="trustNetwork">
+        <div className="container">
+          <div className="trustNetworkIntro" data-reveal>
+            <span className="epicEyebrow">Red de confianza / Salud</span>
+            <h2>Tecnología que entra donde <em>el trabajo importa.</em></h2>
+            <p>
+              Hemos colaborado con sociedades científicas, instituciones médicas
+              y laboratorios en iniciativas digitales, plataformas clínicas,
+              jornadas y experiencias para eventos.
+            </p>
+          </div>
+
+          <div className="partnerLogoGrid" data-reveal>
+            {partnerLogos.map((partner, index) => (
+              <div className="partnerLogoCard" key={partner.name}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <Image
+                  src={partner.image}
+                  alt={`Logo de ${partner.name}`}
+                  width={300}
+                  height={140}
+                  sizes="(max-width: 650px) 50vw, 240px"
+                />
+                <small>{partner.name}</small>
+              </div>
+            ))}
+          </div>
+
+          <div className="institutionRail" data-reveal>
+            <div className="institutionRailLabel">
+              <span>INSTITUCIONES</span>
+              <strong>Salud / Venezuela</strong>
+            </div>
+            <div className="institutionNameGrid">
+              {healthNetwork.map((institution, index) => (
+                <div key={institution}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{institution}</strong>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="trustNetworkNote" data-reveal>
+            Organizaciones e instituciones con las que Zivi Dynamics ha
+            colaborado en proyectos, jornadas o iniciativas tecnológicas.
+          </p>
+        </div>
+      </section>
+
       <section className="proofSection">
         <div className="container">
           <div className="editorialHeading" data-reveal>
@@ -175,6 +241,52 @@ export default function Home() {
           <div className="sectionFootLink" data-reveal>
             <span>Hay {projects.length - featuredProjects.length} casos adicionales</span>
             <Link href="/portafolio">Ver todo el portafolio <span>→</span></Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="uroSpotlight">
+        <div className="container uroSpotlightGrid">
+          <div className="uroSpotlightCopy" data-reveal>
+            <div className="uroStatus">
+              <span><i /> EN DESARROLLO</span>
+              <small>HEALTHTECH / 2026</small>
+            </div>
+            <span className="epicEyebrow">UroApp / Uro-oncología digital</span>
+            <h2>Una historia clínica diseñada alrededor del <em>recorrido oncológico.</em></h2>
+            <p>
+              Estamos convirtiendo el registro uro-oncológico en un sistema
+              clínico trazable: pacientes, triaje, consultas, diagnósticos,
+              estudios, tratamientos y seguimiento en una sola experiencia.
+            </p>
+            <div className="uroFeatureGrid">
+              <span>Registro clínico</span>
+              <span>Triaje especializado</span>
+              <span>Historia longitudinal</span>
+              <span>Indicadores y reportes</span>
+            </div>
+            <Link href="/portafolio/uroapp" className="epicButton epicButtonLight">
+              Explorar el sistema <span>↗</span>
+            </Link>
+          </div>
+
+          <div className="uroSpotlightVisual" data-reveal>
+            <div className="uroVisualChrome">
+              <span>ZIVI / CLINICAL SYSTEM</span>
+              <span>SECURE / ROLE-BASED</span>
+            </div>
+            <Image
+              src="/projects/uroapp.png"
+              alt="Panel clínico y plan de tratamiento de UroApp"
+              fill
+              sizes="(max-width: 900px) 100vw, 58vw"
+              quality={96}
+            />
+            <div className="uroVisualTelemetry">
+              <span>01 / PACIENTES</span>
+              <span>02 / HISTORIA</span>
+              <span>03 / TRATAMIENTO</span>
+            </div>
           </div>
         </div>
       </section>
