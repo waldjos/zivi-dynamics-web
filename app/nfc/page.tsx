@@ -6,10 +6,13 @@ import { NfcSignalDemo } from "../components/NfcSignalDemo";
 
 export const metadata: Metadata = {
   title: "Soluciones y productos NFC para empresas en Venezuela",
-  description: "Diseño de tarjetas, llaveros, stickers y puntos NFC conectados con perfiles, pólizas, menús, WhatsApp, Wi-Fi, analítica y sistemas empresariales.",
+  description: "Diseño de carnets inteligentes, lanyards, portacarnets, tarjetas, llaveros y puntos NFC conectados con accesos, perfiles, pólizas, WhatsApp, analítica y sistemas empresariales.",
   keywords: [
     "NFC Venezuela",
     "tarjetas NFC personalizadas",
+    "carnets NFC personalizados",
+    "lanyards personalizados",
+    "credenciales NFC para eventos",
     "llaveros NFC",
     "stickers NFC",
     "menú NFC",
@@ -71,6 +74,7 @@ const faqs = [
   ["¿Todos los teléfonos pueden leer NFC?", "La mayoría de los smartphones modernos son compatibles. También podemos incorporar un código QR como alternativa de acceso."],
   ["¿La información se puede cambiar después?", "Sí. Podemos usar un destino administrable para actualizar información, promociones o flujos sin reemplazar la pieza física."],
   ["¿NFC reemplaza al código QR?", "No necesariamente. NFC reduce la fricción del acceso y el QR amplía compatibilidad. Una solución bien diseñada puede utilizar ambos."],
+  ["¿También fabrican lanyards y portacarnets?", "Sí. Podemos desarrollar el kit completo: carnet impreso y programado, lanyard personalizado, portacarnet, herrajes y experiencia digital conectada."],
   ["¿Zivi solo vende la pieza física?", "No. Nuestro diferencial es diseñar el sistema completo: producto físico, experiencia digital, integraciones, administración y medición."],
 ] as const;
 
@@ -85,7 +89,7 @@ const serviceSchema = {
     url: "https://zivi-dynamics-web.vercel.app",
   },
   areaServed: ["Venezuela", "Latinoamérica"],
-  description: "Tarjetas, llaveros, stickers y puntos NFC conectados con perfiles, portales, menús, pólizas, WhatsApp, Wi-Fi, analítica y sistemas empresariales.",
+  description: "Carnets inteligentes, lanyards, portacarnets, tarjetas, llaveros, stickers y puntos NFC conectados con accesos, perfiles, portales, pólizas, analítica y sistemas empresariales.",
 };
 
 const faqSchema = {
@@ -151,6 +155,42 @@ export default function NfcPage() {
                 <figcaption><strong>{title}</strong><span>{label}</span></figcaption>
               </figure>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="nfcCredentialCase">
+        <div className="container nfcCredentialCaseGrid">
+          <div className="nfcCredentialVisual" data-reveal>
+            <Image
+              src="/projects/adium-smart-credential.png"
+              alt="Solución de carnet inteligente NFC, lanyard y portacarnet para Adium"
+              fill
+              sizes="(max-width: 900px) 100vw, 56vw"
+              quality={96}
+            />
+            <div className="nfcCredentialLabel">
+              <span>03</span>
+              <strong>IDENTIDAD<br />CONECTADA</strong>
+            </div>
+          </div>
+          <div className="nfcCredentialCopy" data-reveal>
+            <span className="epicEyebrow">Desarrollo de producto / Adium</span>
+            <h2>La credencial también puede ser una interfaz.</h2>
+            <p>
+              Diseñamos una solución integral donde carnet, chip NFC, lanyard y
+              portacarnet funcionan como un solo producto corporativo, listo
+              para identificar, acreditar y abrir experiencias digitales.
+            </p>
+            <div className="nfcCredentialSpecs">
+              <span>Carnet doble cara</span>
+              <span>Chip de aproximación</span>
+              <span>Lanyard personalizado</span>
+              <span>Portacarnet resistente</span>
+            </div>
+            <Link href="/portafolio/adium-carnet-inteligente" className="epicButton epicButtonDark">
+              Ver el desarrollo <span>↗</span>
+            </Link>
           </div>
         </div>
       </section>
