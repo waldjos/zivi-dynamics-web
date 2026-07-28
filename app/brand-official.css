@@ -1,68 +1,223 @@
-/* Official Zivi identity — loaded last to preserve proportions everywhere. */
+/* Resilient official Zivi identity. The mark is vector and the wordmark is rendered as crisp text. */
+.brandLockup{
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:clamp(10px,1.3vw,18px);
+  max-width:100%;
+  color:#fff;
+  line-height:1;
+  text-decoration:none;
+}
+.brandLockupMark{
+  display:block!important;
+  flex:0 0 auto!important;
+  object-fit:contain!important;
+  image-rendering:auto!important;
+  filter:drop-shadow(0 10px 22px rgba(0,0,0,.35));
+}
+.brandLockupWords{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.brandLockupName{
+  display:block;
+  color:#fff;
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  font-weight:750;
+  letter-spacing:-.055em;
+  white-space:nowrap;
+}
+.brandLockupCompany{
+  display:block;
+  color:#f5f7ff;
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  font-weight:520;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.brandLockupTagline{
+  display:block;
+  margin-top:9px;
+  padding-top:8px;
+  width:100%;
+  border-top:1px solid rgba(255,255,255,.35);
+  background:linear-gradient(90deg,#b949ff,#226dff,#18c7ff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  font-size:clamp(.58rem,1.1vw,.84rem);
+  font-weight:800;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.brandLockup-compact{
+  gap:8px;
+}
+.brandLockup-compact .brandLockupMark{
+  width:58px!important;
+  height:58px!important;
+}
+.brandLockup-compact .brandLockupName{
+  font-size:29px;
+}
+.brandLockup-compact .brandLockupCompany{
+  margin-top:2px;
+  font-size:9px;
+  letter-spacing:.04em;
+}
+
+.brandLockup-full{
+  width:min(100%,520px);
+}
+.brandLockup-full .brandLockupMark{
+  width:clamp(120px,31%,190px)!important;
+  height:auto!important;
+}
+.brandLockup-full .brandLockupWords{
+  flex:1;
+}
+.brandLockup-full .brandLockupName{
+  font-size:clamp(3rem,7vw,5.7rem);
+}
+.brandLockup-full .brandLockupCompany{
+  margin-top:4px;
+  font-size:clamp(1rem,2.6vw,1.75rem);
+}
+
 .site-brand{
-  width:210px!important;
+  width:220px!important;
   height:70px!important;
-  flex:0 0 210px!important;
+  flex:0 0 220px!important;
   display:flex!important;
   align-items:center!important;
   justify-content:flex-start!important;
   overflow:visible!important;
 }
-.site-brand img{
-  width:100%!important;
-  height:100%!important;
-  display:block!important;
-  object-fit:contain!important;
-  object-position:left center!important;
-  image-rendering:auto!important;
+.site-brand .brandLockup{
+  width:100%;
 }
-.brandAsset{
+.brandAsset,
+.about-brand-panel{
   display:flex!important;
   align-items:center!important;
   justify-content:center!important;
 }
-.brandAsset img,
-.about-brand-panel>img{
-  width:min(100%,470px)!important;
-  height:auto!important;
-  object-fit:contain!important;
-  image-rendering:auto!important;
+.brandAsset .brandLockup-full,
+.about-brand-panel>.brandLockup-full{
+  width:min(100%,500px);
 }
 .officialFooterBrand{
-  width:min(100%,310px)!important;
+  width:min(100%,340px)!important;
   height:auto!important;
   display:block!important;
 }
-.officialFooterBrand img{
-  width:100%!important;
-  height:auto!important;
-  object-fit:contain!important;
-  image-rendering:auto!important;
+.officialFooterBrand .brandLockup-full{
+  width:100%;
+}
+.officialFooterBrand .brandLockup-full .brandLockupMark{
+  width:118px!important;
+}
+.officialFooterBrand .brandLockup-full .brandLockupName{
+  font-size:3rem;
+}
+.officialFooterBrand .brandLockup-full .brandLockupCompany{
+  font-size:1rem;
+}
+.officialFooterBrand .brandLockupTagline{
+  font-size:.56rem;
 }
 
 @media(max-width:1000px){
   .site-brand{
-    width:184px!important;
-    height:62px!important;
-    flex-basis:184px!important;
+    width:198px!important;
+    height:64px!important;
+    flex-basis:198px!important;
   }
-  .brandAsset img,
-  .about-brand-panel>img{
-    width:min(100%,410px)!important;
+  .brandLockup-compact .brandLockupMark{
+    width:52px!important;
+    height:52px!important;
+  }
+  .brandLockup-compact .brandLockupName{
+    font-size:26px;
+  }
+  .brandLockup-compact .brandLockupCompany{
+    font-size:8px;
+  }
+  .brandAsset .brandLockup-full,
+  .about-brand-panel>.brandLockup-full{
+    width:min(100%,430px);
   }
 }
 
 @media(max-width:650px){
   .site-brand{
-    width:148px!important;
-    height:54px!important;
-    flex-basis:148px!important;
+    width:178px!important;
+    height:58px!important;
+    flex-basis:178px!important;
   }
-  .brandAsset img,
-  .about-brand-panel>img{
-    width:min(100%,320px)!important;
+  .brandLockup-compact{
+    gap:7px;
+  }
+  .brandLockup-compact .brandLockupMark{
+    width:47px!important;
+    height:47px!important;
+  }
+  .brandLockup-compact .brandLockupName{
+    font-size:24px;
+  }
+  .brandLockup-compact .brandLockupCompany{
+    font-size:7.5px;
+  }
+  .brandAsset .brandLockup-full,
+  .about-brand-panel>.brandLockup-full{
+    width:min(100%,330px);
+  }
+  .brandLockup-full{
+    gap:11px;
+  }
+  .brandLockup-full .brandLockupMark{
+    width:105px!important;
+  }
+  .brandLockup-full .brandLockupName{
+    font-size:2.8rem;
+  }
+  .brandLockup-full .brandLockupCompany{
+    font-size:.95rem;
+  }
+  .brandLockupTagline{
+    font-size:.5rem;
+    letter-spacing:.22em;
   }
   .officialFooterBrand{
-    width:min(100%,250px)!important;
+    width:min(100%,280px)!important;
+  }
+  .officialFooterBrand .brandLockup-full .brandLockupMark{
+    width:92px!important;
+  }
+  .officialFooterBrand .brandLockup-full .brandLockupName{
+    font-size:2.5rem;
+  }
+}
+
+@media(max-width:390px){
+  .site-brand{
+    width:164px!important;
+    flex-basis:164px!important;
+  }
+  .brandLockup-compact .brandLockupMark{
+    width:43px!important;
+    height:43px!important;
+  }
+  .brandLockup-compact .brandLockupName{
+    font-size:22px;
+  }
+  .brandLockup-compact .brandLockupCompany{
+    font-size:7px;
   }
 }
