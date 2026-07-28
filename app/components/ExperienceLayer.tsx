@@ -46,6 +46,8 @@ export function ExperienceLayer() {
           stage.style.setProperty("--pointer-y", `${y * 100}%`);
           stage.style.setProperty("--parallax-x", `${(x - 0.5) * 22}px`);
           stage.style.setProperty("--parallax-y", `${(y - 0.5) * 22}px`);
+          stage.style.setProperty("--parallax-core-x", `${(x - 0.5) * 4}px`);
+          stage.style.setProperty("--parallax-core-y", `${(y - 0.5) * 4}px`);
           stage.style.setProperty("--tilt-x", `${(0.5 - y) * 3.2}deg`);
           stage.style.setProperty("--tilt-y", `${(x - 0.5) * 4.2}deg`);
         });
@@ -55,6 +57,8 @@ export function ExperienceLayer() {
         stage.style.removeProperty("--pointer-y");
         stage.style.removeProperty("--parallax-x");
         stage.style.removeProperty("--parallax-y");
+        stage.style.removeProperty("--parallax-core-x");
+        stage.style.removeProperty("--parallax-core-y");
         stage.style.removeProperty("--tilt-x");
         stage.style.removeProperty("--tilt-y");
       };
