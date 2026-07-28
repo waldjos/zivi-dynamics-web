@@ -1294,7 +1294,7 @@ body{
   height:116px;
   padding:19px;
   box-shadow:10px 10px 0 var(--epic-pink),0 0 70px rgba(245,0,120,.14);
-  transform:translate3d(calc(var(--parallax-x,0px) * .16),calc(var(--parallax-y,0px) * .16),35px);
+  transform:translate3d(var(--parallax-core-x,0px),var(--parallax-core-y,0px),35px);
   transition:transform .45s cubic-bezier(.2,.8,.2,1);
 }
 .signalBrand small{
