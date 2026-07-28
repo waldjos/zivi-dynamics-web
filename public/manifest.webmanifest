@@ -10,8 +10,8 @@
   "lang": "es-VE",
   "icons": [
     {
-      "src": "/brand/zivi-app-icon-official.png",
-      "sizes": "192x192",
+      "src": "/brand/zivi-app-icon-real-v2.png",
+      "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any maskable"
     }
