@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
+import { BrandLogo } from "./BrandLogo";
 
 const links = [
   ["/", "Inicio"],
@@ -35,7 +36,7 @@ export function Header() {
   return <header className="site-header">
     <div className="container site-nav">
       <Link href="/" className="site-brand" aria-label="Zivi Dynamics C.A. — Inicio">
-        <img src="/brand/zivi-logo-official-dark.webp" alt="Zivi Dynamics C.A. — Soluciones Digitales" width="1188" height="576" />
+        <BrandLogo variant="compact" priority />
       </Link>
       <nav className="desktop-menu" aria-label="Navegación principal">
         {links.map(([href,label]) => <Link key={href} href={href} className={active(href) ? "active" : ""} aria-current={active(href) ? "page" : undefined}>{label}</Link>)}
