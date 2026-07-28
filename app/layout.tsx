@@ -14,21 +14,59 @@ import "./nfc-media.css";
 import "./production-media.css";
 import "./brand-official.css";
 import "./brand-inline.css";
+import "./epic.css";
 import { Header } from "./components/Header";
 import { MobileActions } from "./components/MobileActions";
 import { BrandLogo } from "./components/BrandLogo";
 
-export const viewport: Viewport = { themeColor: "#050914", colorScheme: "dark" };
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://zivi-dynamics-web.vercel.app";
+
+export const viewport: Viewport = {
+  themeColor: "#080808",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://zivi.com"),
-  title: { default: "Zivi Dynamics C.A. | Desarrollo de Software en Venezuela", template: "%s | Zivi Dynamics" },
-  description: "Desarrollo de aplicaciones móviles, plataformas web, sistemas empresariales, inteligencia artificial y tecnología NFC para empresas y organizaciones en Venezuela.",
-  keywords: ["desarrollo de software Venezuela", "aplicaciones móviles Venezuela", "páginas web corporativas", "sistemas empresariales", "inteligencia artificial para empresas", "tecnología NFC Venezuela"],
-  authors: [{ name: "Zivi Dynamics C.A.", url: "https://zivi.com" }],
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Zivi Dynamics | Software, IA y NFC en Venezuela",
+    template: "%s | Zivi Dynamics",
+  },
+  description: "Diseñamos productos digitales, aplicaciones, sistemas empresariales, automatización con IA y soluciones NFC para empresas en Venezuela y Latinoamérica.",
+  keywords: [
+    "desarrollo de software Venezuela",
+    "empresa de tecnología Venezuela",
+    "aplicaciones móviles Venezuela",
+    "sistemas empresariales",
+    "automatización con inteligencia artificial",
+    "soluciones NFC Venezuela",
+    "tarjetas NFC personalizadas",
+  ],
+  authors: [{ name: "Zivi Dynamics C.A.", url: siteUrl }],
+  creator: "Zivi Dynamics C.A.",
+  publisher: "Zivi Dynamics C.A.",
+  category: "technology",
   alternates: { canonical: "/" },
-  openGraph: { type: "website", locale: "es_VE", url: "https://zivi.com", siteName: "Zivi Dynamics C.A.", title: "Zivi Dynamics C.A. — Soluciones Digitales", description: "Tecnología que conecta, automatiza y transforma.", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Zivi Dynamics C.A." }] },
-  twitter: { card: "summary_large_image", title: "Zivi Dynamics C.A.", description: "Tecnología que conecta, automatiza y transforma.", images: ["/opengraph-image"] },
+  openGraph: {
+    type: "website",
+    locale: "es_VE",
+    url: "/",
+    siteName: "Zivi Dynamics C.A.",
+    title: "Zivi Dynamics — Software que mueve organizaciones",
+    description: "Productos digitales, IA y NFC construidos para operar en el mundo real.",
+    images: [{
+      url: "/og.png",
+      width: 1731,
+      height: 909,
+      alt: "Zivi Dynamics — Software, inteligencia artificial y NFC",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zivi Dynamics",
+    description: "Software que mueve organizaciones. NFC que conecta el mundo físico.",
+    images: ["/og.png"],
+  },
   icons: {
     icon: [{ url: "/brand/zivi-app-icon-official.png", sizes: "192x192", type: "image/png" }],
     apple: [{ url: "/brand/zivi-app-icon-official.png", sizes: "192x192", type: "image/png" }],
@@ -38,19 +76,85 @@ export const metadata: Metadata = {
 };
 
 const organization = {
-  "@context":"https://schema.org", "@type":["Organization","ProfessionalService"], name:"Zivi Dynamics C.A.", legalName:"Zivi Dynamics C.A.", taxID:"J-508175123", url:"https://zivi.com", logo:"https://zivi.com/brand/zivi-mark.svg", email:"ziviagency@gmail.com", telephone:"+58 412 706 5848",
-  address:{"@type":"PostalAddress",addressLocality:"San Antonio de los Altos",addressRegion:"Miranda",addressCountry:"VE"}, sameAs:["https://www.instagram.com/zividynamics"], founder:{"@type":"Person",name:"Joswald Alejandro López Luna",jobTitle:"CEO y Fundador"}, areaServed:["Venezuela","Latinoamérica"], serviceType:["Desarrollo de software","Aplicaciones móviles","Desarrollo web","Inteligencia artificial","Tecnología NFC"]
+  "@context": "https://schema.org",
+  "@type": ["Organization", "ProfessionalService"],
+  name: "Zivi Dynamics C.A.",
+  legalName: "Zivi Dynamics C.A.",
+  taxID: "J-508175123",
+  url: siteUrl,
+  logo: `${siteUrl}/brand/zivi-app-icon-official.png`,
+  image: `${siteUrl}/og.png`,
+  email: "ziviagency@gmail.com",
+  telephone: "+58 412 706 5848",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "San Antonio de los Altos",
+    addressRegion: "Miranda",
+    addressCountry: "VE",
+  },
+  sameAs: ["https://www.instagram.com/zividynamics"],
+  founder: {
+    "@type": "Person",
+    name: "Joswald Alejandro López Luna",
+    jobTitle: "CEO y Fundador",
+  },
+  areaServed: [
+    { "@type": "Country", name: "Venezuela" },
+    { "@type": "Place", name: "Latinoamérica" },
+  ],
+  serviceType: [
+    "Desarrollo de software a la medida",
+    "Aplicaciones móviles",
+    "Sistemas empresariales",
+    "Automatización con inteligencia artificial",
+    "Soluciones NFC para empresas",
+  ],
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="es"><body>
-    <a className="skip-link" href="#contenido">Saltar al contenido principal</a>
-    <Header />
-    <main id="contenido">{children}</main>
-    <footer className="footer"><div className="container footerGrid"><div><Link className="brand officialFooterBrand" href="/"><BrandLogo variant="full" /></Link><p>Tecnología que conecta, automatiza y transforma.</p><p>RIF: J-508175123</p></div><div><h4>Explorar</h4><Link href="/servicios">Servicios</Link><Link href="/portafolio">Portafolio</Link><Link href="/recursos">Recursos</Link><Link href="/nosotros">Nosotros</Link></div><div><h4>Contacto</h4><a href="https://wa.me/584127065848">+58 412 706 5848</a><a href="mailto:ziviagency@gmail.com">ziviagency@gmail.com</a><a href="https://instagram.com/zividynamics">@zividynamics</a><p>San Antonio de los Altos, Miranda, Venezuela</p><Link href="/politica-de-privacidad">Privacidad</Link><Link href="/terminos-y-condiciones">Términos</Link></div></div></footer>
-    <MobileActions />
-    <Analytics />
-    <SpeedInsights />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
-  </body></html>;
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="es">
+      <body>
+        <a className="skip-link" href="#contenido">Saltar al contenido principal</a>
+        <Header />
+        <main id="contenido">{children}</main>
+        <footer className="footer epicFooter">
+          <div className="container footerGrid">
+            <div>
+              <Link className="brand officialFooterBrand" href="/">
+                <BrandLogo variant="full" />
+              </Link>
+              <p>Software que mueve organizaciones. NFC que conecta el mundo físico.</p>
+              <p className="footerLocation">San Antonio de los Altos / Venezuela / LATAM</p>
+            </div>
+            <div>
+              <h4>Explorar</h4>
+              <Link href="/portafolio">Trabajo</Link>
+              <Link href="/nfc">NFC</Link>
+              <Link href="/servicios">Servicios</Link>
+              <Link href="/recursos">Ideas</Link>
+            </div>
+            <div>
+              <h4>Iniciar una conversación</h4>
+              <a href="https://wa.me/584127065848">+58 412 706 5848 ↗</a>
+              <a href="mailto:ziviagency@gmail.com">ziviagency@gmail.com</a>
+              <a href="https://instagram.com/zividynamics">@zividynamics ↗</a>
+              <p>RIF: J-508175123</p>
+              <Link href="/politica-de-privacidad">Privacidad</Link>
+              <Link href="/terminos-y-condiciones">Términos</Link>
+            </div>
+          </div>
+        </footer>
+        <MobileActions />
+        <Analytics />
+        <SpeedInsights />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
+        />
+      </body>
+    </html>
+  );
 }
