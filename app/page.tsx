@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { ExperienceLayer } from "./components/ExperienceLayer";
 import { BrandLogo } from "./components/BrandLogo";
 import { projects } from "./lib/projects";
@@ -73,24 +74,45 @@ export default function Home() {
 
           <div className="heroSignalBoard" data-reveal aria-hidden="true">
             <div className="signalBoardTop">
-              <span>THE ZIVI SYSTEM</span>
-              <span className="signalLive"><i /> EN LÍNEA</span>
+              <span>ZIVI / OPERATING SYSTEM</span>
+              <span className="signalLive"><i /> LIVE NETWORK</span>
+            </div>
+            <div className="signalTelemetry signalTelemetryLeft">
+              <span>CAPACIDAD</span>
+              <div><i style={{ "--level": "92%" } as CSSProperties} /><small>PRODUCT</small></div>
+              <div><i style={{ "--level": "86%" } as CSSProperties} /><small>ENGINEERING</small></div>
+              <div><i style={{ "--level": "78%" } as CSSProperties} /><small>AUTOMATION</small></div>
+            </div>
+            <div className="signalTelemetry signalTelemetryRight">
+              <span>PULSO / 2026</span>
+              <div className="signalWaveform">{Array.from({ length: 14 }).map((_, index) => <i key={index} />)}</div>
+              <small>12.842 SIGNALS</small>
             </div>
             <div className="signalCore">
+              <div className="signalSweep" />
+              <div className="signalReticle"><i /><i /><i /><i /></div>
+              <div className="signalLink signalLinkOne"><i /><i /><i /></div>
+              <div className="signalLink signalLinkTwo"><i /><i /></div>
+              <div className="signalLink signalLinkThree"><i /><i /><i /><i /></div>
+              <div className="signalOrbit signalOrbitZero" />
               <div className="signalOrbit signalOrbitOne" />
               <div className="signalOrbit signalOrbitTwo" />
               <div className="signalOrbit signalOrbitThree" />
               <div className="signalBrand">
                 <BrandLogo variant="compact" />
+                <small>CORE / ACTIVE</small>
               </div>
-              <span className="signalNode nodeOne">APPS</span>
-              <span className="signalNode nodeTwo">NFC</span>
-              <span className="signalNode nodeThree">IA</span>
-              <span className="signalNode nodeFour">WEB</span>
+              <span className="signalNode nodeOne"><i /><strong>APPS</strong><small>PRODUCTOS</small></span>
+              <span className="signalNode nodeTwo"><i /><strong>NFC</strong><small>PHYGITAL</small></span>
+              <span className="signalNode nodeThree"><i /><strong>IA</strong><small>AGENTES</small></span>
+              <span className="signalNode nodeFour"><i /><strong>WEB</strong><small>PLATAFORMAS</small></span>
+              <span className="signalCoordinate coordinateOne">08° 14&apos; 32&quot; N</span>
+              <span className="signalCoordinate coordinateTwo">SYS / ZV-01</span>
             </div>
             <div className="signalBoardBottom">
-              <div><span>CAPAS</span><strong>Físico + digital</strong></div>
-              <div><span>ENFOQUE</span><strong>Resultado operativo</strong></div>
+              <div><span>ENTRADA</span><strong>Problema real</strong></div>
+              <div><span>SISTEMA</span><strong>Estrategia + ingeniería</strong></div>
+              <div><span>SALIDA</span><strong>Capacidad operativa ↑</strong></div>
             </div>
           </div>
         </div>
@@ -180,10 +202,11 @@ export default function Home() {
           <div className="nfcEvidence" data-reveal>
             <div className="nfcEvidenceMain">
               <Image
-                src="/media/lider/lider-keychain-car.webp"
+                src="/media/lider/lider-keychain-car-hq.png"
                 alt="Llavero NFC implementado para Líder de Seguros"
                 fill
                 sizes="(max-width: 800px) 100vw, 42vw"
+                quality={96}
               />
               <span>Implementación real / Seguros</span>
             </div>
