@@ -24,7 +24,7 @@ export function ZiviMark({
         alt=""
         width={821}
         height={1025}
-        sizes="(max-width: 650px) 110px, 190px"
+        sizes="(max-width: 650px) 220px, 380px"
         quality={100}
         priority={priority}
       />
