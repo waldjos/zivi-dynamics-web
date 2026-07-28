@@ -6,7 +6,7 @@ type BrandLogoProps = {
   priority?: boolean;
 };
 
-export function BrandLogo({ variant = "full", className = "" }: BrandLogoProps) {
+export function BrandLogo({ variant = "full", className = "", priority = false }: BrandLogoProps) {
   return (
     <span
       className={`brandLockup brandLockup-${variant} ${className}`.trim()}
