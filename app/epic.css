@@ -1163,3 +1163,511 @@ body{
   .resource-visual{height:210px}
   .lead-form{padding:24px}
 }
+
+/* Immersive systems layer / phase 4 */
+.heroSignalBoard{
+  --board-glow:rgba(0,191,243,.18);
+  min-height:650px;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.035),transparent 38%),
+    radial-gradient(circle at calc(50% + var(--parallax-x,0px)) calc(45% + var(--parallax-y,0px)),var(--board-glow),transparent 31%),
+    #080a0b;
+  box-shadow:16px 16px 0 var(--epic-cyan),0 28px 90px rgba(0,0,0,.55);
+  transform:perspective(1100px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));
+  transform-style:preserve-3d;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease;
+}
+.heroSignalBoard::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:none;
+  opacity:.14;
+  background:repeating-linear-gradient(to bottom,transparent 0 3px,rgba(255,255,255,.1) 4px);
+  mix-blend-mode:soft-light;
+}
+.heroSignalBoard::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  width:180px;
+  height:180px;
+  right:-90px;
+  top:92px;
+  border:1px solid rgba(245,0,120,.4);
+  border-radius:50%;
+  box-shadow:0 0 0 26px rgba(245,0,120,.035),0 0 0 52px rgba(245,0,120,.02);
+}
+.signalBoardTop{
+  position:relative;
+  z-index:8;
+  min-height:48px;
+  background:rgba(8,10,11,.86);
+}
+.signalLive{color:rgba(255,255,255,.62)}
+.signalLive i{animation:signal-live 1.4s ease-in-out infinite}
+.signalTelemetry{
+  position:absolute;
+  z-index:7;
+  width:118px;
+  padding:10px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(8,8,8,.72);
+  backdrop-filter:blur(10px);
+  font:700 7px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.09em;
+  color:rgba(255,255,255,.44);
+}
+.signalTelemetry>span{display:block;margin-bottom:10px;color:var(--epic-cyan)}
+.signalTelemetryLeft{left:16px;top:78px}
+.signalTelemetryRight{right:16px;bottom:93px;width:132px}
+.signalTelemetryLeft>div{display:grid;grid-template-columns:1fr;gap:4px;margin-top:8px}
+.signalTelemetryLeft>div::before{content:"";grid-area:1/1;height:3px;background:rgba(255,255,255,.12)}
+.signalTelemetryLeft>div>i{grid-area:1/1;position:relative;width:var(--level);height:3px;background:var(--epic-pink);box-shadow:0 0 8px rgba(245,0,120,.7)}
+.signalTelemetryLeft>div:nth-of-type(2)>i{background:var(--epic-cyan);box-shadow:0 0 8px rgba(0,191,243,.65)}
+.signalTelemetryLeft>div:nth-of-type(3)>i{background:var(--epic-gold);box-shadow:0 0 8px rgba(255,181,27,.65)}
+.signalWaveform{height:33px;display:flex;align-items:center;gap:3px}
+.signalWaveform i{width:3px;height:22%;background:var(--epic-cyan);animation:signal-wave 1.25s ease-in-out infinite alternate}
+.signalWaveform i:nth-child(3n){height:82%;animation-delay:-.6s}
+.signalWaveform i:nth-child(4n){height:52%;animation-delay:-.2s}
+.signalWaveform i:nth-child(5n){height:100%;animation-delay:-.9s}
+.signalCore{
+  min-height:525px;
+  perspective:900px;
+  background:
+    linear-gradient(rgba(255,255,255,.034) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.034) 1px,transparent 1px);
+  background-size:26px 26px;
+}
+.signalCore::before{left:50%;background:linear-gradient(transparent,rgba(0,191,243,.4),transparent)}
+.signalCore::after{top:50%;background:linear-gradient(90deg,transparent,rgba(0,191,243,.4),transparent)}
+.signalSweep{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:510px;
+  aspect-ratio:1;
+  translate:-50% -50%;
+  border-radius:50%;
+  opacity:.42;
+  background:conic-gradient(from 0deg,transparent 0 76%,rgba(0,191,243,.22) 89%,rgba(0,191,243,.7) 99%,transparent);
+  animation:signal-spin 7s linear infinite;
+  mask-image:radial-gradient(circle,transparent 0 14%,#000 15% 100%);
+}
+.signalReticle{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:476px;
+  aspect-ratio:1;
+  translate:-50% -50%;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+}
+.signalReticle i{position:absolute;width:16px;height:16px;border-color:rgba(255,255,255,.4);border-style:solid}
+.signalReticle i:nth-child(1){left:-1px;top:-1px;border-width:1px 0 0 1px}
+.signalReticle i:nth-child(2){right:-1px;top:-1px;border-width:1px 1px 0 0}
+.signalReticle i:nth-child(3){right:-1px;bottom:-1px;border-width:0 1px 1px 0}
+.signalReticle i:nth-child(4){left:-1px;bottom:-1px;border-width:0 0 1px 1px}
+.signalOrbit{
+  left:50%;
+  top:50%;
+  translate:-50% -50%;
+}
+.signalOrbitZero{width:112px;border-color:rgba(245,0,120,.7);box-shadow:0 0 35px rgba(245,0,120,.14);animation:signal-breathe 2.8s ease-in-out infinite}
+.signalOrbitZero::after{background:#fff;box-shadow:0 0 14px #fff}
+.signalOrbitOne{width:205px}
+.signalOrbitTwo{width:330px}
+.signalOrbitThree{width:460px}
+.signalOrbit::before{
+  content:"";
+  position:absolute;
+  inset:9px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+}
+.signalBrand{
+  width:182px;
+  height:116px;
+  padding:19px;
+  box-shadow:10px 10px 0 var(--epic-pink),0 0 70px rgba(245,0,120,.14);
+  transform:translate3d(calc(var(--parallax-x,0px) * .16),calc(var(--parallax-y,0px) * .16),35px);
+  transition:transform .45s cubic-bezier(.2,.8,.2,1);
+}
+.signalBrand small{
+  position:absolute;
+  left:12px;
+  bottom:8px;
+  color:#5d5953;
+  font:800 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.15em;
+}
+.signalNode{
+  min-width:91px;
+  display:grid;
+  gap:4px;
+  padding:10px 11px 9px 17px;
+  box-shadow:4px 4px 0 rgba(255,255,255,.08);
+  transition:transform .35s ease,border-color .35s ease;
+}
+.signalNode>i{
+  position:absolute;
+  left:-4px;
+  top:50%;
+  width:7px;
+  height:7px;
+  translate:0 -50%;
+  border-radius:50%;
+  background:currentColor;
+  box-shadow:0 0 12px currentColor;
+}
+.signalNode strong{font:800 9px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.16em}
+.signalNode small{color:rgba(255,255,255,.38);font:700 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em}
+.nodeOne{top:14%;left:17%;color:#fff}
+.nodeTwo{right:10%;top:19%}
+.nodeThree{left:10%;bottom:16%}
+.nodeFour{right:17%;bottom:11%}
+.signalLink{
+  position:absolute;
+  z-index:1;
+  left:50%;
+  top:50%;
+  width:170px;
+  height:1px;
+  transform-origin:left center;
+  background:linear-gradient(90deg,rgba(255,255,255,.42),transparent);
+}
+.signalLinkOne{transform:rotate(-142deg)}
+.signalLinkTwo{transform:rotate(-34deg);width:185px}
+.signalLinkThree{transform:rotate(36deg);width:190px}
+.signalLink i{
+  position:absolute;
+  left:18%;
+  top:-2px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--epic-cyan);
+  box-shadow:0 0 11px var(--epic-cyan);
+  animation:signal-packet 2.4s linear infinite;
+}
+.signalLink i:nth-child(2){animation-delay:-.8s}
+.signalLink i:nth-child(3){animation-delay:-1.6s}
+.signalLink i:nth-child(4){animation-delay:-2s}
+.signalCoordinate{
+  position:absolute;
+  color:rgba(255,255,255,.25);
+  font:700 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.12em;
+}
+.coordinateOne{left:17px;bottom:9px}
+.coordinateTwo{right:17px;top:9px}
+.signalBoardBottom{
+  position:relative;
+  z-index:8;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  min-height:76px;
+  padding:0;
+  background:rgba(8,10,11,.92);
+}
+.signalBoardBottom div{justify-content:center;padding:15px 17px;border-right:1px solid var(--epic-line-light)}
+.signalBoardBottom div:last-child{border-right:0;text-align:left}
+.signalBoardBottom strong{font-size:9px}
+
+.nfcSignalDemo{
+  position:relative;
+  min-height:735px;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 50% 38%,rgba(0,191,243,.1),transparent 29%),
+    #090b0c;
+  box-shadow:15px 15px 0 var(--epic-gold),0 30px 100px rgba(0,0,0,.45);
+}
+.nfcSignalDemo::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:10;
+  pointer-events:none;
+  background:repeating-linear-gradient(to bottom,transparent 0 3px,rgba(255,255,255,.06) 4px);
+  opacity:.12;
+}
+.nfcDemoTop{
+  position:relative;
+  z-index:12;
+  min-height:52px;
+  background:rgba(9,11,12,.88);
+}
+.nfcDemoSequence{display:flex;gap:5px;margin-left:auto}
+.nfcDemoSequence button{
+  width:22px;
+  height:3px;
+  padding:0;
+  border:0;
+  background:rgba(255,255,255,.16);
+  cursor:pointer;
+  transition:background .25s ease,width .25s ease;
+}
+.nfcDemoSequence button.active{width:34px;background:var(--epic-gold);box-shadow:0 0 10px rgba(255,181,27,.6)}
+.nfcDemoSequence button.complete{background:var(--epic-cyan)}
+.nfcDemoTop>i{margin-left:3px}
+.nfcDemoStage{
+  min-height:410px;
+  gap:116px;
+  background:linear-gradient(135deg,rgba(255,255,255,.02),transparent);
+}
+.nfcDemoStage::after{z-index:0;background:linear-gradient(transparent,rgba(255,255,255,.16),transparent)}
+.nfcStageGrid{
+  position:absolute;
+  inset:0;
+  opacity:.55;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:24px 24px;
+  mask-image:radial-gradient(circle at center,#000,transparent 78%);
+}
+.nfcStageLabel,.nfcStageCoordinates{
+  position:absolute;
+  z-index:4;
+  color:rgba(255,255,255,.27);
+  font:700 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.12em;
+}
+.label-object{left:18px;top:16px}
+.label-device{right:18px;top:16px}
+.nfcStageCoordinates{right:18px;bottom:13px}
+.nfcObject{
+  width:156px;
+  height:226px;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.2)),
+    var(--epic-paper);
+  box-shadow:9px 9px 0 var(--epic-pink),0 22px 55px rgba(0,0,0,.45);
+  transform:translateX(0) rotate(-5deg);
+  transition:transform .75s cubic-bezier(.16,.8,.2,1),box-shadow .45s ease;
+}
+.nfcObject::before{inset:9px;border-color:rgba(8,8,8,.32)}
+.nfcObject::after{
+  content:"NFC";
+  position:absolute;
+  right:-8px;
+  top:50%;
+  color:rgba(8,8,8,.08);
+  font-size:3rem;
+  font-weight:900;
+  letter-spacing:-.08em;
+  transform:rotate(90deg);
+}
+.nfcObjectHole{
+  position:absolute;
+  top:15px;
+  left:50%;
+  width:21px;
+  height:8px;
+  translate:-50% 0;
+  border:1px solid #777;
+  border-radius:99px;
+  background:#191919;
+}
+.nfcObject>span{position:relative;z-index:2;font-size:5rem}
+.nfcObjectChip{
+  position:absolute;
+  left:50%;
+  bottom:48px;
+  width:30px;
+  height:22px;
+  translate:-50% 0;
+  border:1px solid rgba(8,8,8,.44);
+  border-radius:3px;
+}
+.nfcObjectChip i{position:absolute;left:3px;right:3px;height:1px;background:rgba(8,8,8,.35)}
+.nfcObjectChip i:nth-child(1){top:4px}.nfcObjectChip i:nth-child(2){top:8px}.nfcObjectChip i:nth-child(3){top:12px}.nfcObjectChip i:nth-child(4){top:16px}
+.nfcObject small{bottom:25px;letter-spacing:.08em}
+.nfcPhone{
+  width:154px;
+  height:304px;
+  padding:8px;
+  border-color:#d8d8d8;
+  border-radius:31px;
+  background:linear-gradient(145deg,#333,#080808 40%);
+  box-shadow:0 24px 55px rgba(0,0,0,.5);
+  transform:translateX(0) rotate(5deg);
+  transition:transform .75s cubic-bezier(.16,.8,.2,1),box-shadow .4s ease;
+}
+.nfcPhoneSensor{position:absolute;z-index:4;left:50%;top:10px;width:54px;height:15px;translate:-50% 0;border-radius:99px;background:#050505}
+.nfcPhoneSensor i{position:absolute;right:6px;top:5px;width:5px;height:5px;border-radius:50%;background:#15273a;box-shadow:0 0 5px #2b7ab8}
+.nfcPhoneScreen{
+  position:relative;
+  height:284px;
+  overflow:hidden;
+  gap:8px;
+  padding:22px 11px 12px;
+  border-radius:23px;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(0,191,243,.16),transparent 36%),
+    linear-gradient(165deg,#15191b,#060708);
+  transition:background .45s ease,color .45s ease;
+}
+.nfcPhoneStatus{position:absolute;left:13px;right:13px;top:7px;display:flex;align-items:center;gap:3px;font:700 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.nfcPhoneStatus span{margin-right:auto}
+.nfcPhoneStatus i{width:5px;height:3px;background:currentColor;opacity:.55}
+.nfcPhonePulse{position:absolute;left:50%;top:45%;width:112px;height:112px;translate:-50% -50%}
+.nfcPhonePulse i{position:absolute;inset:0;border:1px solid rgba(0,191,243,.22);border-radius:50%;animation:nfc-phone-pulse 1.8s ease-out infinite}
+.nfcPhonePulse i:nth-child(2){animation-delay:-.9s}
+.nfcPhoneScreen>span{position:relative;z-index:2;width:62px;height:62px;background:rgba(0,191,243,.05);box-shadow:0 0 30px rgba(0,191,243,.08)}
+.nfcPhoneScreen strong{position:relative;z-index:2;max-width:115px;text-align:center;font-size:10px}
+.nfcPhoneScreen>small{position:relative;z-index:2;max-width:116px;color:rgba(255,255,255,.45);font:600 6px/1.35 ui-monospace,SFMono-Regular,Consolas,monospace;text-align:center}
+.nfcPhoneAction{
+  position:absolute;
+  z-index:2;
+  left:12px;
+  right:12px;
+  bottom:12px;
+  padding:8px 3px;
+  border:1px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.5);
+  font:800 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.08em;
+  text-align:center;
+}
+.nfcWaves{z-index:3;width:132px;height:176px;opacity:.35;transition:opacity .4s ease}
+.nfcWaves i{border-color:var(--epic-gold);box-shadow:2px 0 8px rgba(255,181,27,.16)}
+.nfcDataPacket{
+  position:absolute;
+  z-index:5;
+  left:42%;
+  top:50%;
+  display:grid;
+  gap:2px;
+  padding:7px 8px;
+  border:1px solid var(--epic-cyan);
+  background:#090b0c;
+  color:var(--epic-cyan);
+  opacity:0;
+  transform:translate(-50%,-50%);
+  font:800 7px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  transition:opacity .25s ease;
+}
+.nfcDataPacket small{color:rgba(255,255,255,.4);font-size:5px}
+.nfcSignalDemo.step-1 .nfcObject,.nfcSignalDemo.step-2 .nfcObject{transform:translateX(18px) rotate(-2deg)}
+.nfcSignalDemo.step-1 .nfcPhone{transform:translateX(-43px) rotate(2deg)}
+.nfcSignalDemo.step-2 .nfcPhone{transform:translateX(-58px) rotate(0)}
+.nfcSignalDemo.step-3 .nfcPhone{transform:translateX(-58px) rotate(0);box-shadow:0 0 0 1px var(--epic-cyan),0 25px 70px rgba(0,191,243,.22)}
+.nfcSignalDemo.step-1 .nfcWaves,.nfcSignalDemo.step-2 .nfcWaves{opacity:1}
+.nfcSignalDemo.step-1 .nfcWaves i,.nfcSignalDemo.step-2 .nfcWaves i{animation:nfc-wave .72s ease-in-out infinite alternate}
+.nfcSignalDemo.step-1 .nfcDataPacket{opacity:1;animation:nfc-packet 1.2s ease-in-out infinite}
+.nfcSignalDemo.step-2 .nfcDataPacket{opacity:1;left:54%;border-color:var(--epic-lime);color:var(--epic-lime);animation:nfc-verify .9s ease-in-out infinite alternate}
+.nfcSignalDemo.step-2 .nfcPhoneScreen>span{border-color:var(--epic-lime);color:var(--epic-lime)}
+.nfcSignalDemo.step-3 .nfcWaves{opacity:.15}
+.nfcSignalDemo.step-3 .nfcPhoneScreen{
+  background:
+    linear-gradient(180deg,rgba(0,191,243,.12),transparent 45%),
+    #f4f7f8;
+  color:var(--epic-ink);
+}
+.nfcSignalDemo.step-3 .nfcPhoneScreen>span{border-color:var(--epic-ink);background:var(--epic-cyan);color:var(--epic-ink);font-size:24px;box-shadow:0 0 30px rgba(0,191,243,.35)}
+.nfcSignalDemo.step-3 .nfcPhoneScreen>small{color:rgba(8,8,8,.52)}
+.nfcSignalDemo.step-3 .nfcPhoneAction{border-color:var(--epic-ink);background:var(--epic-ink);color:#fff}
+.nfcSignalDemo.step-3 .nfcPhonePulse{display:none}
+.nfcDemoTelemetry{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  min-height:60px;
+  border-bottom:1px solid rgba(255,255,255,.2);
+  background:#0c0e0f;
+}
+.nfcDemoTelemetry>div{display:grid;align-content:center;gap:6px;padding:10px 14px;border-right:1px solid rgba(255,255,255,.13)}
+.nfcDemoTelemetry>div:last-child{border-right:0}
+.nfcDemoTelemetry span{color:rgba(255,255,255,.3);font:700 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em}
+.nfcDemoTelemetry strong{overflow:hidden;color:var(--epic-cyan);font:800 8px/1 ui-monospace,SFMono-Regular,Consolas,monospace;text-overflow:ellipsis;white-space:nowrap}
+.nfcDemoStatus{min-height:124px;background:linear-gradient(90deg,rgba(255,255,255,.025),transparent)}
+.nfcDemoStatus>div>small{margin-left:auto;color:rgba(255,255,255,.25);font:700 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}
+.nfcSignalDemo>button{position:relative;z-index:11;min-height:66px;overflow:hidden;letter-spacing:.01em}
+.nfcSignalDemo>button::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.22),transparent 70%);transform:translateX(-110%);transition:transform .55s ease}
+.nfcSignalDemo>button:hover::before{transform:translateX(110%)}
+.nfcSignalDemo>button>span{display:flex;align-items:center;gap:12px}
+.nfcSignalDemo>button>span i{width:34px;height:1px;background:currentColor}
+
+.nfcRealityItem>div,.nfcCasePhoto{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.08),transparent),
+    #111;
+}
+.nfcRealityItem img,.nfcCasePhoto img{image-rendering:auto}
+.nfcRealityItem.reality-2 img,.nfcRealityItem.reality-3 img{
+  object-fit:contain;
+  padding:26px;
+  filter:drop-shadow(0 20px 35px rgba(0,0,0,.28));
+}
+.nfcEvidenceMini img{object-fit:contain;padding:14px;background:#191919}
+
+@keyframes signal-live{50%{opacity:.35;box-shadow:0 0 3px var(--epic-lime)}}
+@keyframes signal-wave{to{height:100%;opacity:.38}}
+@keyframes signal-breathe{50%{scale:1.11;opacity:.65}}
+@keyframes signal-packet{from{left:7%;opacity:0}18%{opacity:1}82%{opacity:1}to{left:95%;opacity:0}}
+@keyframes nfc-phone-pulse{0%{scale:.35;opacity:.65}100%{scale:1.08;opacity:0}}
+@keyframes nfc-packet{0%,100%{left:43%;opacity:.25}50%{left:57%;opacity:1}}
+@keyframes nfc-verify{to{box-shadow:0 0 22px rgba(168,239,90,.45)}}
+
+@media(max-width:1100px){
+  .heroSignalBoard{min-height:650px}
+  .nfcSignalDemo{min-height:735px}
+}
+
+@media(max-width:650px){
+  .heroSignalBoard{min-height:530px;box-shadow:8px 8px 0 var(--epic-cyan)}
+  .signalCore{min-height:405px}
+  .signalSweep{width:390px}
+  .signalReticle{width:360px}
+  .signalOrbitZero{width:92px}
+  .signalOrbitOne{width:150px}
+  .signalOrbitTwo{width:245px}
+  .signalOrbitThree{width:345px}
+  .signalBrand{width:142px;height:92px;padding:14px}
+  .signalTelemetry{display:none}
+  .signalNode{min-width:72px;padding:8px 8px 7px 13px}
+  .signalNode small{display:none}
+  .nodeOne{left:6%;top:14%}
+  .nodeTwo{right:4%;top:19%}
+  .nodeThree{left:5%;bottom:13%}
+  .nodeFour{right:7%;bottom:10%}
+  .signalLink{width:135px}
+  .signalBoardBottom{min-height:66px}
+  .signalBoardBottom div{padding:11px 8px}
+  .signalBoardBottom strong{font-size:7px}
+  .signalBoardBottom span{font-size:6px}
+  .nfcSignalDemo{min-height:650px;box-shadow:8px 8px 0 var(--epic-gold)}
+  .nfcDemoTop{padding-inline:12px}
+  .nfcDemoTop>span{font-size:7px}
+  .nfcDemoTop>small{display:none}
+  .nfcDemoSequence button{width:14px}
+  .nfcDemoSequence button.active{width:24px}
+  .nfcDemoStage{min-height:350px;gap:52px}
+  .nfcObject{width:112px;height:174px}
+  .nfcObject>span{font-size:3.6rem}
+  .nfcObjectChip{bottom:40px}
+  .nfcPhone{width:116px;height:244px;padding:6px}
+  .nfcPhoneScreen{height:228px;border-radius:19px}
+  .nfcPhoneScreen>span{width:50px;height:50px}
+  .nfcSignalDemo.step-1 .nfcPhone{transform:translateX(-24px) rotate(2deg)}
+  .nfcSignalDemo.step-2 .nfcPhone,.nfcSignalDemo.step-3 .nfcPhone{transform:translateX(-34px)}
+  .nfcSignalDemo.step-1 .nfcObject,.nfcSignalDemo.step-2 .nfcObject{transform:translateX(10px) rotate(-2deg)}
+  .nfcWaves{width:84px;height:140px}
+  .nfcDataPacket{display:none}
+  .nfcDemoTelemetry{min-height:54px}
+  .nfcDemoTelemetry>div{padding:8px}
+  .nfcDemoStatus{min-height:118px;padding:20px}
+  .nfcDemoStatus strong{font-size:1rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .heroSignalBoard{transform:none}
+  .signalSweep,.signalOrbit,.signalWaveform i,.signalLink i,.nfcPhonePulse i,.nfcDataPacket{animation:none!important}
+}
