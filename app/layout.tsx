@@ -92,7 +92,10 @@ const organization = {
     addressRegion: "Miranda",
     addressCountry: "VE",
   },
-  sameAs: ["https://www.instagram.com/zividynamics"],
+  sameAs: [
+    "https://www.instagram.com/zividynamics",
+    "https://linktr.ee/Zividynamics",
+  ],
   founder: {
     "@type": "Person",
     name: "Joswald Alejandro López Luna",
@@ -138,6 +141,9 @@ export default function RootLayout({
             </div>
             <div>
               <h4>Iniciar una conversación</h4>
+              <a className="footerLinkHub" href="https://linktr.ee/Zividynamics" target="_blank" rel="noreferrer">
+                Todos nuestros enlaces <span>↗</span>
+              </a>
               <a href="https://wa.me/584127065848">+58 412 706 5848 ↗</a>
               <a href="mailto:ziviagency@gmail.com">ziviagency@gmail.com</a>
               <a href="https://instagram.com/zividynamics">@zividynamics ↗</a>
