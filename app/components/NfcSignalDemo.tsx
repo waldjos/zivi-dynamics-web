@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ZiviMark } from "./ZiviMark";
 
 const states = [
   {
@@ -84,27 +85,46 @@ export function NfcSignalDemo() {
       </div>
       <div className="nfcDemoStage" aria-hidden="true">
         <div className="nfcStageGrid" />
+        <div className="nfcFieldParticles">
+          {Array.from({ length: 12 }).map((_, index) => <i key={index} />)}
+        </div>
         <div className="nfcStageLabel label-object">OBJETO / 01</div>
         <div className="nfcStageLabel label-device">DISPOSITIVO / 02</div>
         <div className="nfcObject">
           <div className="nfcObjectHole" />
-          <span>Z</span>
+          <ZiviMark className="nfcObjectMark" />
+          <b>ZIVI / ACCESS</b>
           <div className="nfcObjectChip"><i /><i /><i /><i /></div>
           <small>Tap / ID 7F-2A</small>
         </div>
         <div className="nfcWaves"><i /><i /><i /></div>
+        <div className="nfcContactNode"><i /><i /><i /></div>
+        <div className="nfcEnergyBridge"><i /><i /><i /><i /><i /></div>
         <div className="nfcDataPacket">
           <span>NDEF</span>
           <small>144 B</small>
+        </div>
+        <div className="nfcDataPacket nfcDataPacketSecondary">
+          <span>AUTH</span>
+          <small>AES</small>
         </div>
         <div className="nfcPhone" aria-hidden="true">
           <div className="nfcPhoneSensor"><i /></div>
           <div className="nfcPhoneScreen">
             <div className="nfcPhoneStatus"><span>9:41</span><i /><i /><i /></div>
+            <div className="nfcPhoneBrand">
+              <ZiviMark className="nfcPhoneBrandMark" />
+              <b>ZIVI TAP</b>
+            </div>
             <div className="nfcPhonePulse"><i /><i /></div>
-            <span>{step === 3 ? "✓" : "NFC"}</span>
+            <span className="nfcPhoneState">{step === 3 ? "✓" : "NFC"}</span>
             <strong>{current.screen}</strong>
             <small>{current.screenDetail}</small>
+            <div className="nfcPhoneResult">
+              <span><i /> SERVICIO VERIFICADO</span>
+              <b>LÍDER / ASISTENCIA</b>
+              <div><i /><i /><i /></div>
+            </div>
             <div className="nfcPhoneAction">{step === 3 ? "ABRIR SERVICIO" : "CONEXIÓN SEGURA"}</div>
           </div>
         </div>

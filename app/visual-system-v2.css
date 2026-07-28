@@ -1,0 +1,628 @@
+/* Zivi visual system v2: geometric identity, cinematic signal layers and mobile resilience. */
+
+/* Crisp, asset-independent Zivi monogram */
+.ziviMonogram{
+  --zivi-mark-cyan:#00d9ff;
+  --zivi-mark-blue:#236cff;
+  --zivi-mark-gold:#ffbd20;
+  --zivi-mark-pink:#f50078;
+  position:relative;
+  isolation:isolate;
+  display:inline-grid;
+  width:72px;
+  height:72px;
+  flex:0 0 auto;
+  place-items:center;
+  aspect-ratio:1;
+  line-height:1;
+}
+.ziviMonogramFrame{
+  position:absolute;
+  inset:7%;
+  border:1px solid rgba(255,255,255,.34);
+  border-radius:24%;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.11),transparent 42%),
+    rgba(3,7,10,.72);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,217,255,.09),
+    0 14px 34px rgba(0,0,0,.34);
+  transform:rotate(45deg);
+}
+.ziviMonogramFrame::before,
+.ziviMonogramFrame::after{
+  content:"";
+  position:absolute;
+  width:22%;
+  height:22%;
+  border-style:solid;
+  border-color:var(--zivi-mark-cyan);
+  filter:drop-shadow(0 0 5px rgba(0,217,255,.65));
+}
+.ziviMonogramFrame::before{
+  left:-1px;
+  top:-1px;
+  border-width:2px 0 0 2px;
+  border-radius:28% 0 0;
+}
+.ziviMonogramFrame::after{
+  right:-1px;
+  bottom:-1px;
+  border-width:0 2px 2px 0;
+  border-radius:0 0 28%;
+}
+.ziviMonogramGlyph{
+  position:absolute;
+  z-index:2;
+  inset:20% 17%;
+  background:linear-gradient(145deg,var(--zivi-mark-cyan) 3%,var(--zivi-mark-blue) 34%,var(--zivi-mark-gold) 58%,var(--zivi-mark-pink) 92%);
+  clip-path:polygon(0 0,100% 0,100% 22%,35% 78%,100% 78%,100% 100%,0 100%,0 78%,65% 22%,0 22%);
+  filter:drop-shadow(0 0 8px rgba(0,217,255,.28)) drop-shadow(0 8px 11px rgba(0,0,0,.35));
+}
+.ziviMonogramGlyph::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(145deg,rgba(255,255,255,.78),transparent 27% 72%,rgba(255,255,255,.3));
+  clip-path:inherit;
+  mix-blend-mode:screen;
+  opacity:.65;
+}
+.ziviMonogramPulse{
+  position:absolute;
+  z-index:-1;
+  inset:23%;
+  border-radius:50%;
+  background:rgba(0,217,255,.18);
+  box-shadow:
+    0 0 26px rgba(0,217,255,.38),
+    12px 10px 30px rgba(245,0,120,.24);
+}
+
+.ziviMonogram.brandLockupMark{
+  position:relative;
+  display:inline-grid!important;
+  aspect-ratio:1;
+  overflow:visible;
+  filter:none;
+}
+.brandLockupName{
+  font-weight:900;
+  letter-spacing:.03em;
+}
+.brandLockupCompany{letter-spacing:.11em}
+
+/* Homepage operating system */
+.heroSignalBoard{
+  --board-glow:rgba(0,217,255,.15);
+  border-color:rgba(187,239,255,.52);
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.035),transparent 38%),
+    radial-gradient(circle at calc(50% + var(--parallax-x,0px)) calc(45% + var(--parallax-y,0px)),var(--board-glow),transparent 31%),
+    #060809;
+}
+.signalConstellation{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  overflow:hidden;
+  pointer-events:none;
+}
+.signalConstellation::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:78%;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:conic-gradient(from 180deg,transparent 0 72%,rgba(0,217,255,.12) 88%,transparent 100%);
+  translate:-50% -50%;
+  animation:zivi-field-rotate 18s linear infinite;
+  mask-image:radial-gradient(circle,transparent 0 34%,#000 35% 49%,transparent 50%);
+}
+.signalConstellation>i{
+  position:absolute;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:var(--epic-cyan);
+  box-shadow:0 0 12px currentColor;
+  animation:zivi-star 2.8s ease-in-out infinite;
+}
+.signalConstellation>i:nth-child(3n){width:3px;height:3px;color:var(--epic-pink);background:currentColor;animation-delay:-1.2s}
+.signalConstellation>i:nth-child(4n){width:5px;height:5px;color:var(--epic-gold);background:currentColor;animation-delay:-2s}
+.signalConstellation>i:nth-child(1){left:9%;top:52%}.signalConstellation>i:nth-child(2){left:17%;top:31%}
+.signalConstellation>i:nth-child(3){left:23%;top:70%}.signalConstellation>i:nth-child(4){left:30%;top:17%}
+.signalConstellation>i:nth-child(5){left:35%;top:42%}.signalConstellation>i:nth-child(6){left:41%;top:82%}
+.signalConstellation>i:nth-child(7){left:46%;top:25%}.signalConstellation>i:nth-child(8){left:54%;top:73%}
+.signalConstellation>i:nth-child(9){left:60%;top:12%}.signalConstellation>i:nth-child(10){left:65%;top:43%}
+.signalConstellation>i:nth-child(11){left:70%;top:81%}.signalConstellation>i:nth-child(12){left:77%;top:25%}
+.signalConstellation>i:nth-child(13){left:83%;top:59%}.signalConstellation>i:nth-child(14){left:90%;top:38%}
+.signalConstellation>i:nth-child(15){left:15%;top:86%}.signalConstellation>i:nth-child(16){left:88%;top:86%}
+.signalPulseRings{
+  position:absolute;
+  left:50%;
+  top:50%;
+  z-index:1;
+  width:178px;
+  aspect-ratio:1;
+  translate:-50% -50%;
+  pointer-events:none;
+}
+.signalPulseRings i{
+  position:absolute;
+  inset:0;
+  border:1px solid rgba(0,217,255,.48);
+  border-radius:50%;
+  opacity:0;
+  animation:zivi-core-pulse 3.2s cubic-bezier(.2,.7,.2,1) infinite;
+}
+.signalPulseRings i:nth-child(2){animation-delay:1.05s;border-color:rgba(255,181,27,.42)}
+.signalPulseRings i:nth-child(3){animation-delay:2.1s;border-color:rgba(245,0,120,.42)}
+.signalOrbitZero{width:174px}
+.signalBrand{
+  width:156px;
+  height:156px;
+  padding:21px 22px 24px;
+  place-content:center;
+  border:1px solid rgba(255,255,255,.5);
+  border-radius:18px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.07),transparent 42%),
+    rgba(5,8,10,.96);
+  color:#fff;
+  box-shadow:
+    9px 9px 0 var(--epic-pink),
+    -1px -1px 0 rgba(0,217,255,.7),
+    0 0 74px rgba(0,217,255,.18);
+}
+.signalBrand::before,
+.signalBrand::after{
+  content:"";
+  position:absolute;
+  width:17px;
+  height:17px;
+  pointer-events:none;
+}
+.signalBrand::before{
+  left:7px;
+  top:7px;
+  border-left:1px solid var(--epic-cyan);
+  border-top:1px solid var(--epic-cyan);
+}
+.signalBrand::after{
+  right:7px;
+  bottom:7px;
+  border-right:1px solid var(--epic-pink);
+  border-bottom:1px solid var(--epic-pink);
+}
+.signalBrandMark{width:78px;height:78px}
+.signalBrandMark{
+  animation:zivi-mark-hover 4.2s ease-in-out infinite;
+}
+.signalBrandMark .ziviMonogramFrame{
+  animation:zivi-frame-breathe 4.2s ease-in-out infinite;
+}
+.signalBrand>strong{
+  margin-top:5px;
+  font:900 12px/1 Arial,"Helvetica Neue",sans-serif;
+  letter-spacing:.28em;
+  transform:translateX(.14em);
+}
+.signalBrandStatus{
+  position:absolute;
+  left:10px;
+  top:9px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:rgba(255,255,255,.46);
+  font:700 5px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.1em;
+}
+.signalBrandStatus i{
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:var(--epic-lime);
+  box-shadow:0 0 8px var(--epic-lime);
+}
+.signalBrand small{
+  left:auto;
+  right:9px;
+  bottom:8px;
+  color:rgba(255,255,255,.38);
+}
+
+/* Partner logo contrast */
+.partnerLogoCard-ink img{
+  filter:brightness(0) saturate(100%);
+  opacity:.92;
+}
+
+/* NFC cinematic interaction */
+.nfcSignalDemo{
+  border-color:rgba(255,255,255,.62);
+  background:
+    radial-gradient(circle at 50% 39%,rgba(0,217,255,.14),transparent 27%),
+    linear-gradient(145deg,rgba(255,255,255,.025),transparent 50%),
+    #07090a;
+  transform:perspective(1150px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));
+  transform-style:preserve-3d;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease;
+}
+.nfcDemoStage{
+  perspective:900px;
+  background:
+    radial-gradient(circle at 50% 48%,rgba(255,181,27,.06),transparent 22%),
+    linear-gradient(135deg,rgba(255,255,255,.02),transparent);
+}
+.nfcStageGrid{
+  animation:zivi-grid-drift 12s linear infinite;
+}
+.nfcFieldParticles{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+}
+.nfcFieldParticles i{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:var(--epic-cyan);
+  box-shadow:0 0 10px currentColor;
+  opacity:.32;
+  animation:zivi-particle 3s ease-in-out infinite;
+}
+.nfcFieldParticles i:nth-child(3n){color:var(--epic-gold);background:currentColor;animation-delay:-1.1s}
+.nfcFieldParticles i:nth-child(4n){color:var(--epic-pink);background:currentColor;animation-delay:-2s}
+.nfcFieldParticles i:nth-child(1){left:8%;top:33%}.nfcFieldParticles i:nth-child(2){left:16%;top:75%}
+.nfcFieldParticles i:nth-child(3){left:24%;top:18%}.nfcFieldParticles i:nth-child(4){left:33%;top:84%}
+.nfcFieldParticles i:nth-child(5){left:41%;top:30%}.nfcFieldParticles i:nth-child(6){left:48%;top:71%}
+.nfcFieldParticles i:nth-child(7){left:57%;top:17%}.nfcFieldParticles i:nth-child(8){left:65%;top:78%}
+.nfcFieldParticles i:nth-child(9){left:73%;top:28%}.nfcFieldParticles i:nth-child(10){left:84%;top:65%}
+.nfcFieldParticles i:nth-child(11){left:91%;top:35%}.nfcFieldParticles i:nth-child(12){left:76%;top:89%}
+.nfcObject{
+  transform-style:preserve-3d;
+  border:1px solid rgba(8,8,8,.22);
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.92),rgba(214,218,221,.65)),
+    var(--epic-paper);
+}
+.nfcObject::after{
+  color:rgba(8,8,8,.055);
+  font-size:2.55rem;
+}
+.nfcObject>.nfcObjectMark{
+  position:absolute;
+  z-index:3;
+  left:50%;
+  top:35px;
+  width:78px;
+  height:78px;
+  translate:-50% 0;
+  font-size:initial;
+}
+.nfcObject>.nfcObjectMark .ziviMonogramFrame{
+  background:#090b0c;
+  border-color:rgba(8,8,8,.38);
+}
+.nfcObject>b{
+  position:absolute;
+  z-index:3;
+  left:0;
+  right:0;
+  top:120px;
+  color:#111;
+  font:900 8px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.18em;
+  text-align:center;
+}
+.nfcObjectChip{
+  left:25px;
+  bottom:37px;
+  translate:0;
+  width:27px;
+  height:21px;
+  background:linear-gradient(145deg,#ffd966,#d89c14);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.32);
+}
+.nfcObject small{right:13px;bottom:24px;left:58px;text-align:right}
+.nfcWaves{
+  z-index:4;
+  filter:drop-shadow(0 0 8px rgba(255,181,27,.24));
+}
+.nfcContactNode{
+  position:absolute;
+  z-index:6;
+  left:50%;
+  top:50%;
+  width:15px;
+  height:15px;
+  border:1px solid var(--epic-gold);
+  border-radius:50%;
+  translate:-50% -50%;
+  opacity:.25;
+  transition:opacity .35s ease,box-shadow .35s ease,scale .35s ease;
+}
+.nfcContactNode i{
+  position:absolute;
+  inset:-1px;
+  border:1px solid var(--epic-gold);
+  border-radius:50%;
+  opacity:0;
+}
+.nfcContactNode i:nth-child(2){inset:-7px}.nfcContactNode i:nth-child(3){inset:-14px}
+.nfcEnergyBridge{
+  position:absolute;
+  z-index:3;
+  left:50%;
+  top:50%;
+  width:126px;
+  height:2px;
+  translate:-50% -50%;
+  background:linear-gradient(90deg,transparent,var(--epic-gold),var(--epic-cyan),transparent);
+  opacity:.12;
+  transition:opacity .35s ease;
+}
+.nfcEnergyBridge i{
+  position:absolute;
+  top:-2px;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--epic-cyan);
+  box-shadow:0 0 11px currentColor;
+  opacity:0;
+}
+.nfcSignalDemo.step-1 .nfcEnergyBridge,
+.nfcSignalDemo.step-2 .nfcEnergyBridge{opacity:1}
+.nfcSignalDemo.step-1 .nfcEnergyBridge i,
+.nfcSignalDemo.step-2 .nfcEnergyBridge i{animation:zivi-energy 1.25s linear infinite}
+.nfcEnergyBridge i:nth-child(2){animation-delay:-.25s!important}.nfcEnergyBridge i:nth-child(3){animation-delay:-.5s!important}
+.nfcEnergyBridge i:nth-child(4){animation-delay:-.75s!important}.nfcEnergyBridge i:nth-child(5){animation-delay:-1s!important}
+.nfcSignalDemo.step-1 .nfcContactNode,
+.nfcSignalDemo.step-2 .nfcContactNode{
+  opacity:1;
+  scale:1.2;
+  box-shadow:0 0 24px rgba(255,181,27,.8);
+}
+.nfcSignalDemo.step-1 .nfcObjectMark,
+.nfcSignalDemo.step-2 .nfcObjectMark{animation:zivi-tap-mark 1.15s ease-in-out infinite}
+.nfcSignalDemo.step-1 .nfcContactNode i,
+.nfcSignalDemo.step-2 .nfcContactNode i{animation:zivi-contact 1.6s ease-out infinite}
+.nfcSignalDemo.step-1 .nfcContactNode i:nth-child(2),
+.nfcSignalDemo.step-2 .nfcContactNode i:nth-child(2){animation-delay:.45s}
+.nfcSignalDemo.step-1 .nfcContactNode i:nth-child(3),
+.nfcSignalDemo.step-2 .nfcContactNode i:nth-child(3){animation-delay:.9s}
+.nfcDataPacketSecondary{top:43%;opacity:0!important}
+.nfcSignalDemo.step-2 .nfcDataPacketSecondary{
+  left:46%;
+  border-color:var(--epic-pink);
+  color:var(--epic-pink);
+  opacity:1!important;
+  animation:zivi-auth-packet 1.15s ease-in-out infinite;
+}
+.nfcPhoneScreen{
+  grid-template-rows:auto auto auto;
+  align-content:center;
+}
+.nfcPhoneBrand{
+  position:absolute;
+  z-index:3;
+  left:13px;
+  top:25px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:rgba(255,255,255,.72);
+  font:800 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.1em;
+}
+.nfcPhoneBrandMark{width:17px;height:17px}
+.nfcPhoneBrandMark .ziviMonogramFrame{border:0;background:transparent;box-shadow:none}
+.nfcPhoneBrandMark .ziviMonogramFrame::before,
+.nfcPhoneBrandMark .ziviMonogramFrame::after,
+.nfcPhoneBrandMark .ziviMonogramPulse{display:none}
+.nfcPhoneScreen>.nfcPhoneState{
+  transition:transform .45s ease,border-color .35s ease,background .35s ease,color .35s ease;
+}
+.nfcPhoneResult{
+  position:absolute;
+  z-index:5;
+  left:11px;
+  right:11px;
+  bottom:42px;
+  display:grid;
+  gap:5px;
+  padding:9px;
+  border:1px solid rgba(8,8,8,.3);
+  background:#fff;
+  color:#080808;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .4s ease .12s,transform .4s ease .12s;
+}
+.nfcPhoneResult>span{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  color:#387e18;
+  font:900 5px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.06em;
+}
+.nfcPhoneResult>span i{width:4px;height:4px;border-radius:50%;background:var(--epic-lime);box-shadow:0 0 7px var(--epic-lime)}
+.nfcPhoneResult>b{font:900 7px/1 Arial,sans-serif}
+.nfcPhoneResult>div{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.nfcPhoneResult>div i{height:10px;background:#e9edf0}
+.nfcSignalDemo.step-3 .nfcPhoneResult{opacity:1;transform:none}
+.nfcSignalDemo.step-3 .nfcPhoneScreen>strong,
+.nfcSignalDemo.step-3 .nfcPhoneScreen>small{transform:translateY(-23px)}
+.nfcSignalDemo.step-3 .nfcPhoneScreen>.nfcPhoneState{transform:translateY(-24px) scale(.72)}
+.nfcSignalDemo.step-3 .nfcPhoneBrand{color:#111}
+.nfcSignalDemo.step-3 .nfcObject{opacity:.72;filter:saturate(.72)}
+.nfcPhoneScreen>strong,
+.nfcPhoneScreen>small{transition:transform .45s ease}
+.formatObject>.formatObjectMark{
+  width:118px;
+  height:118px;
+  font-size:initial;
+}
+.formatObject>.formatObjectMark .ziviMonogramFrame{
+  background:#080a0b;
+}
+
+/* Keep editorial typography inside every device width. */
+main *{min-width:0}
+main :where(h1,h2,h3,blockquote){
+  max-width:100%;
+  overflow-wrap:break-word;
+  word-break:normal;
+  hyphens:auto;
+  text-wrap:balance;
+}
+.institutionNameGrid div{grid-template-columns:35px minmax(0,1fr)}
+.institutionNameGrid strong,
+.heroDataRail span,
+.signalBoardBottom strong,
+.portfolioEpicCopy h2,
+.caseEpicIntro h1,
+.caseEpicOutcome h2,
+.pageHero h1,
+.footer a{
+  overflow-wrap:anywhere;
+}
+.epicButton{
+  max-width:100%;
+  white-space:normal;
+  text-align:left;
+}
+.nfcDemoStatus>div{flex-wrap:wrap}
+.nfcFaq details{max-width:100%;overflow:hidden}
+.nfcFaq summary{
+  max-width:100%;
+  align-items:flex-start;
+  gap:12px;
+}
+.nfcFaq summary>span{
+  display:grid;
+  width:28px;
+  min-width:28px;
+  flex:0 0 28px;
+  place-items:center;
+}
+.nfcPhoneScreen>*{max-width:100%}
+
+@keyframes zivi-field-rotate{to{rotate:360deg}}
+@keyframes zivi-mark-hover{0%,100%{translate:0 -1px}50%{translate:0 3px}}
+@keyframes zivi-frame-breathe{0%,100%{transform:rotate(45deg) scale(.96)}50%{transform:rotate(45deg) scale(1.035);border-color:rgba(0,217,255,.72)}}
+@keyframes zivi-star{0%,100%{opacity:.22;scale:.72}50%{opacity:1;scale:1.35}}
+@keyframes zivi-core-pulse{0%{opacity:.72;scale:.55}75%,100%{opacity:0;scale:1.65}}
+@keyframes zivi-grid-drift{to{background-position:24px 24px}}
+@keyframes zivi-particle{0%,100%{opacity:.18;translate:0 0}50%{opacity:.85;translate:0 -8px}}
+@keyframes zivi-energy{0%{left:5%;opacity:0}18%{opacity:1}82%{opacity:1}100%{left:95%;opacity:0}}
+@keyframes zivi-contact{0%{opacity:.85;scale:.55}100%{opacity:0;scale:1.8}}
+@keyframes zivi-tap-mark{0%,100%{scale:.96;filter:brightness(1)}50%{scale:1.05;filter:brightness(1.18) drop-shadow(0 0 8px rgba(0,217,255,.45))}}
+@keyframes zivi-auth-packet{0%,100%{left:57%;opacity:.2}50%{left:43%;opacity:1}}
+
+@media(max-width:650px){
+  .epicHero h1{font-size:clamp(2.75rem,14vw,5rem)}
+  .epicHero h1 em{font-size:.68em}
+  .trustNetworkIntro h2,
+  .editorialHeading h2,
+  .uroSpotlightCopy h2,
+  .nfcCredentialCopy h2,
+  .nfcFormatsHead h2,
+  .nfcCaseCopy h2,
+  .nfcCompatibility h2,
+  .nfcFaq h2{
+    font-size:clamp(2.45rem,12vw,4rem);
+    letter-spacing:-.055em;
+  }
+  .portfolioEpicHero h1,
+  .caseEpicIntro h1,
+  .caseEpicOutcome h2,
+  .nfcFinalCta h2{
+    font-size:clamp(2.65rem,13vw,4.6rem);
+    letter-spacing:-.06em;
+  }
+  .pageHero h1,
+  .epicContact h2{
+    font-size:clamp(2.4rem,11.5vw,3.8rem);
+    letter-spacing:-.05em;
+  }
+  .nfcEpicIntro h1{font-size:clamp(3.55rem,17vw,6.2rem)}
+  .heroKicker{flex-wrap:wrap;row-gap:9px}
+  .heroKicker i{width:26px}
+  .heroSignalBoard,
+  .nfcSignalDemo,
+  .nfcCredentialVisual,
+  .nfcCaseVisual,
+  .caseEpicVisual,
+  .caseEvidenceFrame{
+    width:calc(100% - 8px);
+  }
+  .signalBrand{
+    width:124px;
+    height:124px;
+    padding:18px;
+    border-radius:14px;
+  }
+  .signalBrandMark{width:61px;height:61px}
+  .signalBrand>strong{font-size:9px}
+  .signalBrandStatus{font-size:4px}
+  .signalPulseRings{width:142px}
+  .signalOrbitZero{width:142px}
+  .signalConstellation>i:nth-child(n+11){display:none}
+  .partnerLogoCard-ink img{padding:8px}
+  .nfcObject>.nfcObjectMark{top:27px;width:60px;height:60px}
+  .nfcObject>b{top:93px;font-size:6px}
+  .nfcObjectChip{left:17px;bottom:31px;width:22px;height:17px}
+  .nfcObject small{left:44px;right:8px;bottom:19px;font-size:5px}
+  .nfcEnergyBridge{width:84px}
+  .nfcPhoneBrand{top:23px;left:10px;font-size:5px}
+  .nfcPhoneBrandMark{width:14px;height:14px}
+  .nfcPhoneResult{bottom:36px;padding:7px}
+  .nfcPhoneResult>b{font-size:6px}
+  .nfcPhoneAction{right:8px;left:8px;font-size:5px}
+  .nfcSignalDemo.step-3 .nfcPhoneScreen>strong,
+  .nfcSignalDemo.step-3 .nfcPhoneScreen>small{transform:translateY(-18px)}
+  .nfcSignalDemo.step-3 .nfcPhoneScreen>.nfcPhoneState{transform:translateY(-18px) scale(.7)}
+  .formatObject>.formatObjectMark{width:96px;height:96px}
+  .nfcDemoStatus>div>small{margin-left:0;width:100%}
+}
+
+@media(max-width:390px){
+  .partnerLogoCard{min-height:148px;padding-inline:13px}
+  .partnerLogoCard img{height:68px}
+  .institutionRailLabel{align-items:flex-start;flex-direction:column}
+  .institutionRailLabel strong{font-size:1.25rem}
+  .institutionNameGrid div{grid-template-columns:28px minmax(0,1fr);gap:8px;padding-inline:12px}
+  .institutionNameGrid strong{font-size:.92rem;line-height:1.28}
+  .signalNode{min-width:64px}
+  .signalNode strong{font-size:7px}
+  .signalBoardTop{padding-inline:12px;letter-spacing:.09em}
+  .signalBrand{width:116px;height:116px}
+  .signalBrandMark{width:56px;height:56px}
+  .signalPulseRings,.signalOrbitZero{width:132px}
+  .nfcDemoStage{gap:38px}
+  .nfcEnergyBridge{width:68px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .signalConstellation::before,
+  .signalConstellation>i,
+  .signalPulseRings i,
+  .signalBrandMark,
+  .signalBrandMark .ziviMonogramFrame,
+  .nfcStageGrid,
+  .nfcFieldParticles i,
+  .nfcEnergyBridge i,
+  .nfcContactNode i{
+    animation:none!important;
+  }
+  .nfcSignalDemo{transform:none}
+}

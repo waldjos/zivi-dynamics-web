@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { ExperienceLayer } from "./components/ExperienceLayer";
-import { BrandLogo } from "./components/BrandLogo";
+import { ZiviMark } from "./components/ZiviMark";
 import { projects } from "./lib/projects";
 
 const capabilities = [
@@ -50,10 +50,10 @@ const healthNetwork = [
 ] as const;
 
 const partnerLogos = [
-  { name: "Adium", image: "/clients/adium.png" },
-  { name: "Zoriak Pharma", image: "/clients/zoriak.png" },
-  { name: "FC Pharma", image: "/clients/fc-pharma.png" },
-  { name: "UroGastrol", image: "/clients/urogastrol.png" },
+  { name: "Adium", image: "/clients/adium.png", tone: "ink" },
+  { name: "Zoriak Pharma", image: "/clients/zoriak.png", tone: "color" },
+  { name: "FC Pharma", image: "/clients/fc-pharma.png", tone: "color" },
+  { name: "UroGastrol", image: "/clients/urogastrol.png", tone: "color" },
 ] as const;
 
 export default function Home() {
@@ -106,8 +106,12 @@ export default function Home() {
               <small>12.842 SIGNALS</small>
             </div>
             <div className="signalCore">
+              <div className="signalConstellation">
+                {Array.from({ length: 16 }).map((_, index) => <i key={index} />)}
+              </div>
               <div className="signalSweep" />
               <div className="signalReticle"><i /><i /><i /><i /></div>
+              <div className="signalPulseRings"><i /><i /><i /></div>
               <div className="signalLink signalLinkOne"><i /><i /><i /></div>
               <div className="signalLink signalLinkTwo"><i /><i /></div>
               <div className="signalLink signalLinkThree"><i /><i /><i /><i /></div>
@@ -116,7 +120,9 @@ export default function Home() {
               <div className="signalOrbit signalOrbitTwo" />
               <div className="signalOrbit signalOrbitThree" />
               <div className="signalBrand">
-                <BrandLogo variant="compact" />
+                <span className="signalBrandStatus"><i /> ZV / CORE</span>
+                <ZiviMark className="signalBrandMark" />
+                <strong>ZIVI</strong>
                 <small>CORE / ACTIVE</small>
               </div>
               <span className="signalNode nodeOne"><i /><strong>APPS</strong><small>PRODUCTOS</small></span>
@@ -157,7 +163,7 @@ export default function Home() {
 
           <div className="partnerLogoGrid" data-reveal>
             {partnerLogos.map((partner, index) => (
-              <div className="partnerLogoCard" key={partner.name}>
+              <div className={`partnerLogoCard partnerLogoCard-${partner.tone}`} key={partner.name}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <Image
                   src={partner.image}
