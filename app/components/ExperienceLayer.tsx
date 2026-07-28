@@ -35,25 +35,38 @@ export function ExperienceLayer() {
     );
 
     const cleanups = stages.map((stage) => {
+      let animationFrame = 0;
       const move = (event: PointerEvent) => {
-        const bounds = stage.getBoundingClientRect();
-        stage.style.setProperty(
-          "--pointer-x",
-          `${((event.clientX - bounds.left) / bounds.width) * 100}%`,
-        );
-        stage.style.setProperty(
-          "--pointer-y",
-          `${((event.clientY - bounds.top) / bounds.height) * 100}%`,
-        );
+        cancelAnimationFrame(animationFrame);
+        animationFrame = requestAnimationFrame(() => {
+          const bounds = stage.getBoundingClientRect();
+          const x = (event.clientX - bounds.left) / bounds.width;
+          const y = (event.clientY - bounds.top) / bounds.height;
+          stage.style.setProperty("--pointer-x", `${x * 100}%`);
+          stage.style.setProperty("--pointer-y", `${y * 100}%`);
+          stage.style.setProperty("--parallax-x", `${(x - 0.5) * 22}px`);
+          stage.style.setProperty("--parallax-y", `${(y - 0.5) * 22}px`);
+          stage.style.setProperty("--parallax-core-x", `${(x - 0.5) * 4}px`);
+          stage.style.setProperty("--parallax-core-y", `${(y - 0.5) * 4}px`);
+          stage.style.setProperty("--tilt-x", `${(0.5 - y) * 3.2}deg`);
+          stage.style.setProperty("--tilt-y", `${(x - 0.5) * 4.2}deg`);
+        });
       };
       const leave = () => {
         stage.style.removeProperty("--pointer-x");
         stage.style.removeProperty("--pointer-y");
+        stage.style.removeProperty("--parallax-x");
+        stage.style.removeProperty("--parallax-y");
+        stage.style.removeProperty("--parallax-core-x");
+        stage.style.removeProperty("--parallax-core-y");
+        stage.style.removeProperty("--tilt-x");
+        stage.style.removeProperty("--tilt-y");
       };
 
       stage.addEventListener("pointermove", move);
       stage.addEventListener("pointerleave", leave);
       return () => {
+        cancelAnimationFrame(animationFrame);
         stage.removeEventListener("pointermove", move);
         stage.removeEventListener("pointerleave", leave);
       };

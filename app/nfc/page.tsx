@@ -142,12 +142,12 @@ export default function NfcPage() {
           </div>
           <div className="nfcRealityGrid">
             {[
-              ["/media/lider/lider-keychain-car.webp", "Llavero vehicular", "Seguro + asistencia"],
+              ["/media/lider/lider-keychain-car-hq.png", "Llavero vehicular", "Seguro + asistencia"],
               ["/media/lider/lider-keychain-package.webp", "Entrega híbrida", "NFC + QR"],
               ["/media/nfc/nfc-credential-techs-sanitized.webp", "Credencial corporativa", "Identidad + acceso"],
             ].map(([image, title, label], index) => (
               <figure key={image} className={`nfcRealityItem reality-${index + 1}`} data-reveal>
-                <div><Image src={image} alt={`${title}: ${label}`} fill sizes="(max-width: 760px) 100vw, 33vw" /></div>
+                <div><Image src={image} alt={`${title}: ${label}`} fill sizes="(max-width: 760px) 100vw, 33vw" quality={95} /></div>
                 <figcaption><strong>{title}</strong><span>{label}</span></figcaption>
               </figure>
             ))}
@@ -206,7 +206,7 @@ export default function NfcPage() {
         <div className="container nfcCaseFeatureGrid">
           <div className="nfcCaseVisual" data-reveal>
             <div className="nfcCasePhoto main">
-              <Image src="/media/lider/lider-keychain-car.webp" alt="Llavero NFC conectado con el portal de Líder de Seguros" fill sizes="(max-width: 800px) 100vw, 48vw" />
+              <Image src="/media/lider/lider-keychain-car-hq.png" alt="Llavero NFC conectado con el portal de Líder de Seguros" fill sizes="(max-width: 800px) 100vw, 48vw" quality={96} />
             </div>
             <div className="nfcCasePhoto inset">
               <Image src="/media/lider/lider-admin-desktop.webp" alt="Panel administrativo conectado con la solución NFC" fill sizes="280px" />
