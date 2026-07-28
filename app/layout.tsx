@@ -13,6 +13,7 @@ import "./service-cards.css";
 import "./nfc-media.css";
 import "./production-media.css";
 import "./brand-official.css";
+import "./brand-inline.css";
 import { Header } from "./components/Header";
 import { MobileActions } from "./components/MobileActions";
 import { BrandLogo } from "./components/BrandLogo";
