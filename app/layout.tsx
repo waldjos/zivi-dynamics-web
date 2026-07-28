@@ -15,6 +15,7 @@ import "./production-media.css";
 import "./brand-official.css";
 import "./brand-inline.css";
 import "./epic.css";
+import "./visual-system-v2.css";
 import { Header } from "./components/Header";
 import { MobileActions } from "./components/MobileActions";
 import { BrandLogo } from "./components/BrandLogo";
