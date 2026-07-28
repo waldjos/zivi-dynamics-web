@@ -1,46 +1,51 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ZiviMark } from "./ZiviMark";
 
 const states = [
   {
     label: "Punto preparado",
-    detail: "El chip espera una lectura segura a pocos centímetros.",
+    detail: "La pieza física queda lista para responder a pocos centímetros.",
     action: "Iniciar acercamiento",
-    protocol: "IDLE",
+    protocol: "STANDBY",
     latency: "—",
     destination: "ZIVI.CLOUD",
+    signal: "READY",
     screen: "Acerca el teléfono",
-    screenDetail: "No necesitas instalar una app",
+    screenDetail: "Sin instalar aplicaciones",
   },
   {
     label: "Campo detectado",
-    detail: "El teléfono energiza el chip y solicita la experiencia asignada.",
+    detail: "El teléfono energiza el chip y recibe el contenido configurado.",
     action: "Completar enlace",
     protocol: "ISO 14443",
     latency: "08 ms",
-    destination: "RESOLVING",
-    screen: "NFC detectado",
-    screenDetail: "Leyendo punto seguro…",
+    destination: "NDEF / READ",
+    signal: "FIELD",
+    screen: "Lectura NFC activa",
+    screenDetail: "Intercambio a 13.56 MHz",
   },
   {
     label: "Enlace verificado",
-    detail: "Zivi resuelve el destino editable y registra la interacción.",
+    detail: "La plataforma valida el destino editable y registra la interacción.",
     action: "Abrir experiencia",
     protocol: "HTTPS",
     latency: "126 ms",
-    destination: "READY",
-    screen: "Conexión segura",
-    screenDetail: "Experiencia verificada",
+    destination: "AUTH / OK",
+    signal: "SECURE",
+    screen: "Enlace verificado",
+    screenDetail: "Destino seguro y medible",
   },
   {
     label: "Acción completada",
-    detail: "La póliza, menú, perfil o servicio aparece listo para usarse.",
+    detail: "El servicio aparece listo: menú, perfil, póliza, catálogo o asistencia.",
     action: "Repetir demostración",
     protocol: "OPEN",
     latency: "0.4 s",
-    destination: "LÍDER / SOS",
+    destination: "SERVICE / LIVE",
+    signal: "OPEN",
     screen: "Asistencia vehicular",
     screenDetail: "Póliza · Documentos · SOS",
   },
@@ -55,20 +60,20 @@ export function NfcSignalDemo() {
     if (isPaused) return;
     const timer = window.setTimeout(
       () => setStep((currentStep) => (currentStep + 1) % states.length),
-      step === states.length - 1 ? 4400 : 3000,
+      step === states.length - 1 ? 4600 : 3200,
     );
     return () => window.clearTimeout(timer);
   }, [step, isPaused]);
 
   return (
     <div
-      className={`nfcSignalDemo step-${step}`}
+      className={`nfcSignalDemo nfcSignalDemoV3 step-${step}`}
       aria-label="Demostración interactiva de una experiencia NFC"
       onPointerEnter={() => setIsPaused(true)}
       onPointerLeave={() => setIsPaused(false)}
     >
       <div className="nfcDemoTop">
-        <span>ZIVI / TAP LAB</span>
+        <span>ZIVI / NFC FIELD LAB</span>
         <div className="nfcDemoSequence" aria-label={`Paso ${step + 1} de ${states.length}`}>
           {states.map((state, index) => (
             <button
@@ -81,60 +86,61 @@ export function NfcSignalDemo() {
           ))}
         </div>
         <i aria-hidden="true" />
-        <small>LIVE · 13.56 MHz</small>
+        <small>LIVE</small>
       </div>
-      <div className="nfcDemoStage" aria-hidden="true">
-        <div className="nfcStageGrid" />
-        <div className="nfcFieldParticles">
-          {Array.from({ length: 12 }).map((_, index) => <i key={index} />)}
+
+      <div className="nfcDemoStage nfcPhotoStage">
+        <Image
+          className="nfcStageProductPhoto"
+          src="/media/nfc-commerce/nfc-tap-studio-v3.png"
+          alt="Mockup fotográfico de una tarjeta NFC real junto a un teléfono preparado para leerla"
+          fill
+          sizes="(max-width: 760px) 100vw, 48vw"
+          quality={96}
+          priority
+        />
+        <div className="nfcStagePhotoShade" aria-hidden="true" />
+        <div className="nfcStageGrid" aria-hidden="true" />
+        <div className="nfcStageLabel label-object">TARJETA / NTAG</div>
+        <div className="nfcStageLabel label-device">SMARTPHONE / NFC</div>
+
+        <div className="nfcCardProbe" aria-hidden="true">
+          <span>TAG 7F-2A</span>
+          <i />
         </div>
-        <div className="nfcStageLabel label-object">OBJETO / 01</div>
-        <div className="nfcStageLabel label-device">DISPOSITIVO / 02</div>
-        <div className="nfcObject">
-          <div className="nfcObjectHole" />
-          <ZiviMark className="nfcObjectMark" />
-          <b>ZIVI / ACCESS</b>
-          <div className="nfcObjectChip"><i /><i /><i /><i /></div>
-          <small>Tap / ID 7F-2A</small>
+        <div className="nfcPhoneProbe" aria-hidden="true">
+          <ZiviMark className="nfcProbeMark" />
+          <span>ZIVI TAP</span>
         </div>
-        <div className="nfcWaves"><i /><i /><i /></div>
-        <div className="nfcContactNode"><i /><i /><i /></div>
-        <div className="nfcEnergyBridge"><i /><i /><i /><i /><i /></div>
-        <div className="nfcDataPacket">
-          <span>NDEF</span>
-          <small>144 B</small>
+
+        <div className="nfcPhotoRoute" aria-hidden="true">
+          <i /><i /><i /><i />
         </div>
-        <div className="nfcDataPacket nfcDataPacketSecondary">
-          <span>AUTH</span>
-          <small>AES</small>
+        <div className="nfcPhotoTapZone" aria-hidden="true">
+          <i /><i /><i />
+          <b>{current.signal}</b>
         </div>
-        <div className="nfcPhone" aria-hidden="true">
-          <div className="nfcPhoneSensor"><i /></div>
-          <div className="nfcPhoneScreen">
-            <div className="nfcPhoneStatus"><span>9:41</span><i /><i /><i /></div>
-            <div className="nfcPhoneBrand">
-              <ZiviMark className="nfcPhoneBrandMark" />
-              <b>ZIVI TAP</b>
-            </div>
-            <div className="nfcPhonePulse"><i /><i /></div>
-            <span className="nfcPhoneState">{step === 3 ? "✓" : "NFC"}</span>
-            <strong>{current.screen}</strong>
-            <small>{current.screenDetail}</small>
-            <div className="nfcPhoneResult">
-              <span><i /> SERVICIO VERIFICADO</span>
-              <b>LÍDER / ASISTENCIA</b>
-              <div><i /><i /><i /></div>
-            </div>
-            <div className="nfcPhoneAction">{step === 3 ? "ABRIR SERVICIO" : "CONEXIÓN SEGURA"}</div>
+        <div className="nfcPhotoPacket packet-one" aria-hidden="true">NDEF</div>
+        <div className="nfcPhotoPacket packet-two" aria-hidden="true">AUTH</div>
+
+        <div className="nfcLiveResult" aria-live="polite">
+          <span><i /> {step === 3 ? "SERVICIO DISPONIBLE" : "SESIÓN SEGURA"}</span>
+          <strong>{current.screen}</strong>
+          <small>{current.screenDetail}</small>
+          <div>
+            <b>{String(step + 1).padStart(2, "0")}</b>
+            <em>{current.destination}</em>
           </div>
         </div>
-        <div className="nfcStageCoordinates">X 08.42 / Y 13.56</div>
+        <div className="nfcStageCoordinates" aria-hidden="true">13.56 MHz / 04 CM / AES</div>
       </div>
+
       <div className="nfcDemoTelemetry" aria-hidden="true">
         <div><span>PROTOCOLO</span><strong>{current.protocol}</strong></div>
         <div><span>RESPUESTA</span><strong>{current.latency}</strong></div>
         <div><span>DESTINO</span><strong>{current.destination}</strong></div>
       </div>
+
       <div className="nfcDemoStatus" aria-live="polite">
         <div>
           <span>0{step + 1}</span>
@@ -143,6 +149,7 @@ export function NfcSignalDemo() {
         </div>
         <p>{current.detail}</p>
       </div>
+
       <button
         type="button"
         onClick={() => setStep((currentStep) => (currentStep + 1) % states.length)}

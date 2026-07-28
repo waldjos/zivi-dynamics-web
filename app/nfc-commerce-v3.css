@@ -1,0 +1,721 @@
+/* Zivi identity and NFC commerce system v3 */
+
+/* A flatter, sharper identity: no diamond, glass frame or gradient fill. */
+.ziviMonogram{
+  --zivi-flat-cyan:#00c9e8;
+  --zivi-flat-gold:#ffbd20;
+  position:relative;
+  display:inline-grid;
+  width:72px;
+  height:72px;
+  isolation:isolate;
+  flex:0 0 auto;
+  place-items:center;
+  aspect-ratio:1;
+  filter:none;
+}
+.ziviMonogramFrame,
+.ziviMonogramGlyph{
+  position:absolute;
+  inset:17% 12%;
+  border:0;
+  border-radius:0;
+  clip-path:polygon(0 0,100% 0,100% 24%,38% 75%,100% 75%,100% 100%,0 100%,0 76%,62% 24%,0 24%);
+}
+.ziviMonogramFrame{
+  background:var(--zivi-flat-cyan);
+  box-shadow:none;
+  transform:none;
+  translate:4px -4px;
+  opacity:.9;
+}
+.ziviMonogramFrame::before,
+.ziviMonogramFrame::after{
+  display:none;
+}
+.ziviMonogramGlyph{
+  z-index:2;
+  background:#f7f5ef;
+  filter:drop-shadow(0 8px 13px rgba(0,0,0,.34));
+}
+.ziviMonogramGlyph::after{
+  display:none;
+}
+.ziviMonogramPulse{
+  position:absolute;
+  z-index:3;
+  right:5%;
+  bottom:10%;
+  width:13%;
+  height:13%;
+  inset:auto 5% 10% auto;
+  border-radius:1px;
+  background:var(--zivi-flat-gold);
+  box-shadow:0 0 14px rgba(255,189,32,.45);
+}
+.brandLockup{
+  gap:12px;
+}
+.brandLockupName{
+  font-weight:950;
+  letter-spacing:.13em;
+}
+.brandLockupCompany{
+  margin-top:5px;
+  color:rgba(255,255,255,.68);
+  letter-spacing:.18em;
+}
+.brandLockupTagline{
+  border-color:rgba(255,255,255,.2);
+  background:none;
+  color:var(--zivi-flat-cyan);
+  -webkit-text-fill-color:currentColor;
+  letter-spacing:.25em;
+}
+.signalBrandMark .ziviMonogramFrame{
+  background:var(--zivi-flat-cyan);
+  border:0;
+  transform:none;
+}
+
+/* Photographic NFC demonstration */
+.nfcSignalDemoV3{
+  overflow:hidden;
+  border-color:rgba(255,255,255,.5);
+  background:#070809;
+  box-shadow:12px 12px 0 var(--epic-gold),0 28px 90px rgba(0,0,0,.42);
+}
+.nfcSignalDemoV3::before{
+  background:linear-gradient(90deg,var(--epic-cyan),var(--epic-gold),var(--epic-pink));
+}
+.nfcSignalDemoV3 .nfcDemoTop{
+  position:relative;
+  z-index:10;
+  background:#080909;
+}
+.nfcPhotoStage{
+  position:relative;
+  display:block;
+  min-height:0;
+  aspect-ratio:1;
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,.2);
+  background:#050607;
+  perspective:none;
+}
+.nfcPhotoStage::after{
+  z-index:3;
+  inset:0;
+  width:auto;
+  height:auto;
+  background:
+    linear-gradient(180deg,rgba(4,5,6,.38),transparent 25% 68%,rgba(4,5,6,.68)),
+    radial-gradient(circle at 52% 53%,transparent 0 18%,rgba(3,4,5,.13) 58%,rgba(3,4,5,.64) 100%);
+  pointer-events:none;
+}
+.nfcStageProductPhoto{
+  z-index:0;
+  object-fit:cover;
+  filter:saturate(.82) contrast(1.07);
+  transform:scale(1.025);
+  transition:filter .65s ease,transform 1.1s cubic-bezier(.2,.75,.2,1);
+}
+.nfcSignalDemoV3.step-1 .nfcStageProductPhoto,
+.nfcSignalDemoV3.step-2 .nfcStageProductPhoto{
+  filter:saturate(1) contrast(1.08) brightness(1.03);
+  transform:scale(1.045);
+}
+.nfcSignalDemoV3.step-3 .nfcStageProductPhoto{
+  filter:saturate(.92) contrast(1.08) brightness(1.06);
+  transform:scale(1.025);
+}
+.nfcPhotoStage .nfcStageGrid{
+  z-index:2;
+  inset:0;
+  opacity:.22;
+  background-image:
+    linear-gradient(rgba(0,201,232,.16) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,201,232,.16) 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(180deg,#000,transparent 38%,#000);
+}
+.nfcPhotoStage .nfcStageLabel{
+  z-index:5;
+  top:18px;
+  padding:7px 9px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(5,7,8,.62);
+  color:rgba(255,255,255,.64);
+  backdrop-filter:blur(10px);
+}
+.nfcPhotoStage .label-object{left:18px}
+.nfcPhotoStage .label-device{right:18px}
+.nfcCardProbe,
+.nfcPhoneProbe{
+  position:absolute;
+  z-index:6;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 9px;
+  border:1px solid rgba(255,255,255,.26);
+  background:rgba(4,6,7,.72);
+  color:#fff;
+  font:800 7px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.1em;
+  backdrop-filter:blur(9px);
+}
+.nfcCardProbe{
+  left:7%;
+  bottom:19%;
+}
+.nfcCardProbe i{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--epic-gold);
+  box-shadow:0 0 12px var(--epic-gold);
+}
+.nfcPhoneProbe{
+  right:6%;
+  top:29%;
+}
+.nfcProbeMark{
+  width:19px;
+  height:19px;
+}
+.nfcProbeMark .ziviMonogramFrame{translate:1px -1px}
+.nfcProbeMark .ziviMonogramGlyph{filter:none}
+.nfcPhotoRoute{
+  position:absolute;
+  z-index:5;
+  left:34%;
+  top:56%;
+  width:33%;
+  height:2px;
+  overflow:visible;
+  background:linear-gradient(90deg,transparent,var(--epic-gold) 17%,var(--epic-cyan) 82%,transparent);
+  filter:drop-shadow(0 0 9px rgba(0,201,232,.7));
+  opacity:.18;
+  transform:rotate(-9deg);
+  transform-origin:center;
+  transition:opacity .35s ease;
+}
+.nfcPhotoRoute::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:-8px;
+  height:18px;
+  background:linear-gradient(90deg,transparent,rgba(255,189,32,.09),rgba(0,201,232,.1),transparent);
+  filter:blur(5px);
+}
+.nfcPhotoRoute i{
+  position:absolute;
+  top:-3px;
+  left:0;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--epic-cyan);
+  box-shadow:0 0 14px currentColor;
+  opacity:0;
+}
+.nfcSignalDemoV3.step-1 .nfcPhotoRoute,
+.nfcSignalDemoV3.step-2 .nfcPhotoRoute,
+.nfcSignalDemoV3.step-3 .nfcPhotoRoute{
+  opacity:1;
+}
+.nfcSignalDemoV3.step-1 .nfcPhotoRoute i,
+.nfcSignalDemoV3.step-2 .nfcPhotoRoute i{
+  animation:nfc-v3-route 1.25s linear infinite;
+}
+.nfcPhotoRoute i:nth-child(2){animation-delay:-.3s!important}
+.nfcPhotoRoute i:nth-child(3){animation-delay:-.6s!important}
+.nfcPhotoRoute i:nth-child(4){animation-delay:-.9s!important}
+.nfcPhotoTapZone{
+  position:absolute;
+  z-index:7;
+  left:51.5%;
+  top:53.5%;
+  width:62px;
+  height:62px;
+  translate:-50% -50%;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,189,32,.5);
+  border-radius:50%;
+  background:rgba(4,6,7,.48);
+  color:var(--epic-gold);
+  box-shadow:0 0 0 1px rgba(0,0,0,.25),0 0 35px rgba(255,189,32,.12);
+  backdrop-filter:blur(6px);
+}
+.nfcPhotoTapZone b{
+  position:relative;
+  z-index:2;
+  font:900 7px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.08em;
+}
+.nfcPhotoTapZone i{
+  position:absolute;
+  inset:0;
+  border:1px solid currentColor;
+  border-radius:50%;
+  opacity:0;
+}
+.nfcSignalDemoV3.step-1 .nfcPhotoTapZone,
+.nfcSignalDemoV3.step-2 .nfcPhotoTapZone{
+  color:var(--epic-cyan);
+  border-color:var(--epic-cyan);
+  box-shadow:0 0 40px rgba(0,201,232,.42);
+}
+.nfcSignalDemoV3.step-1 .nfcPhotoTapZone i,
+.nfcSignalDemoV3.step-2 .nfcPhotoTapZone i{
+  animation:nfc-v3-pulse 1.7s ease-out infinite;
+}
+.nfcPhotoTapZone i:nth-child(2){animation-delay:.55s!important}
+.nfcPhotoTapZone i:nth-child(3){animation-delay:1.1s!important}
+.nfcSignalDemoV3.step-3 .nfcPhotoTapZone{
+  color:var(--epic-lime);
+  border-color:var(--epic-lime);
+  box-shadow:0 0 42px rgba(154,226,81,.4);
+}
+.nfcPhotoPacket{
+  position:absolute;
+  z-index:8;
+  left:41%;
+  top:43%;
+  padding:5px 7px;
+  border:1px solid var(--epic-cyan);
+  background:#071015;
+  color:var(--epic-cyan);
+  font:900 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.11em;
+  opacity:0;
+  box-shadow:0 0 18px rgba(0,201,232,.16);
+}
+.nfcPhotoPacket.packet-two{
+  top:65%;
+  border-color:var(--epic-pink);
+  color:var(--epic-pink);
+}
+.nfcSignalDemoV3.step-1 .packet-one{
+  animation:nfc-v3-packet 1.35s ease-in-out infinite;
+}
+.nfcSignalDemoV3.step-2 .nfcPhotoPacket{
+  animation:nfc-v3-packet 1.15s ease-in-out infinite;
+}
+.nfcSignalDemoV3.step-2 .packet-two{animation-delay:-.55s}
+.nfcLiveResult{
+  position:absolute;
+  z-index:9;
+  right:4%;
+  bottom:5%;
+  width:min(46%,230px);
+  display:grid;
+  gap:6px;
+  padding:13px;
+  border:1px solid rgba(255,255,255,.38);
+  background:rgba(5,7,8,.84);
+  color:#fff;
+  box-shadow:0 18px 50px rgba(0,0,0,.42);
+  backdrop-filter:blur(14px);
+  transition:border-color .35s ease,background .35s ease,transform .45s ease;
+}
+.nfcLiveResult>span{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:var(--epic-cyan);
+  font:900 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.09em;
+}
+.nfcLiveResult>span i{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:currentColor;
+  box-shadow:0 0 10px currentColor;
+}
+.nfcLiveResult>strong{
+  max-width:100%;
+  font-size:clamp(.72rem,1.2vw,.95rem);
+  line-height:1.05;
+}
+.nfcLiveResult>small{
+  color:rgba(255,255,255,.5);
+  font-size:7px;
+}
+.nfcLiveResult>div{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:5px;
+  padding-top:8px;
+  border-top:1px solid rgba(255,255,255,.17);
+}
+.nfcLiveResult b{
+  color:var(--epic-gold);
+  font:900 1.05rem/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+.nfcLiveResult em{
+  overflow:hidden;
+  color:rgba(255,255,255,.56);
+  font:700 6px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  font-style:normal;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.nfcSignalDemoV3.step-3 .nfcLiveResult{
+  border-color:var(--epic-cyan);
+  background:rgba(3,16,18,.9);
+  transform:translateY(-4px);
+}
+.nfcSignalDemoV3.step-3 .nfcLiveResult>span{color:var(--epic-lime)}
+.nfcPhotoStage .nfcStageCoordinates{
+  z-index:6;
+  left:18px;
+  right:auto;
+  bottom:18px;
+  color:rgba(255,255,255,.34);
+}
+.nfcSignalDemoV3 .nfcDemoTelemetry{
+  position:relative;
+  z-index:10;
+  background:#090a0a;
+}
+.nfcSignalDemoV3 .nfcDemoStatus{
+  position:relative;
+  z-index:10;
+  background:#090a0a;
+}
+.nfcSignalDemoV3>button{
+  background:var(--epic-pink);
+}
+
+/* Real product categories */
+.nfcFormatCard{
+  min-height:610px;
+  padding:15px;
+}
+.formatObjectPhoto{
+  position:relative;
+  height:305px;
+  margin:18px 0 27px;
+  overflow:hidden;
+  border:1px solid var(--epic-ink);
+  background:#0a0b0b;
+}
+.formatObjectPhoto::after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:0;
+  background:linear-gradient(180deg,transparent 48%,rgba(3,4,5,.78));
+  pointer-events:none;
+}
+.formatObjectPhoto img{
+  object-fit:cover;
+  transition:transform .75s cubic-bezier(.2,.75,.2,1),filter .45s ease;
+}
+.format-keychain .formatObjectPhoto img{object-position:center 58%}
+.format-sticker .formatObjectPhoto img{
+  object-position:center;
+  filter:grayscale(.15) contrast(1.08);
+}
+.format-talker .formatObjectPhoto img{object-position:center 58%}
+.nfcFormatCard:hover .formatObjectPhoto img{
+  transform:scale(1.055);
+}
+.formatPhotoSpec{
+  position:absolute;
+  z-index:3;
+  left:11px;
+  bottom:11px;
+  padding:7px 8px;
+  border:1px solid rgba(255,255,255,.36);
+  background:rgba(5,7,8,.76);
+  color:#fff;
+  font:800 7px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.09em;
+  backdrop-filter:blur(8px);
+}
+.formatTapBadge{
+  position:absolute;
+  z-index:3;
+  top:11px;
+  right:11px;
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.58);
+  border-radius:50%;
+  background:rgba(5,7,8,.73);
+  color:#fff;
+  backdrop-filter:blur(9px);
+}
+.formatTapBadge i{
+  position:absolute;
+  width:20px;
+  height:20px;
+  border:1px solid var(--epic-cyan);
+  border-radius:50%;
+  box-shadow:0 0 13px rgba(0,201,232,.35);
+}
+.formatTapBadge i::before,
+.formatTapBadge i::after{
+  content:"";
+  position:absolute;
+  border:1px solid var(--epic-cyan);
+  border-radius:50%;
+}
+.formatTapBadge i::before{inset:-6px}
+.formatTapBadge i::after{inset:-12px;opacity:.45}
+.formatTapBadge b{
+  position:absolute;
+  bottom:7px;
+  font:900 5px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.08em;
+}
+.nfcPhotoCredits{
+  margin-top:20px;
+  padding-top:16px;
+  border-top:1px solid rgba(8,8,8,.22);
+  color:#5e5952;
+  font-size:.72rem;
+}
+.nfcPhotoCredits summary{
+  width:max-content;
+  cursor:pointer;
+  color:#282521;
+  font-weight:850;
+}
+.nfcPhotoCredits p{
+  max-width:980px;
+  margin:10px 0 0;
+  line-height:1.65;
+}
+.nfcPhotoCredits a{
+  color:#111;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+/* Commerce-led NFC section */
+.nfcCommerceLab{
+  padding:130px 0;
+  overflow:hidden;
+  background:#070808;
+  color:#fff;
+}
+.nfcCommerceLabGrid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:74px;
+  align-items:center;
+}
+.nfcCommercePhoto{
+  position:relative;
+  min-height:690px;
+  margin:0;
+  border:1px solid rgba(255,255,255,.58);
+  background:#111;
+  box-shadow:14px 14px 0 var(--epic-cyan);
+  overflow:hidden;
+}
+.nfcCommercePhoto::after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:0;
+  background:linear-gradient(180deg,transparent 48%,rgba(2,3,4,.86));
+}
+.nfcCommercePhoto img{
+  object-fit:cover;
+  object-position:center;
+  filter:saturate(.86) contrast(1.06);
+  transition:transform 1s cubic-bezier(.2,.75,.2,1),filter .45s ease;
+}
+.nfcCommercePhoto:hover img{
+  transform:scale(1.035);
+  filter:saturate(1) contrast(1.08);
+}
+.nfcCommercePhoto figcaption{
+  position:absolute;
+  z-index:2;
+  left:26px;
+  right:26px;
+  bottom:25px;
+  display:grid;
+  gap:8px;
+}
+.nfcCommercePhoto figcaption span{
+  color:var(--epic-cyan);
+  font:900 8px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.14em;
+}
+.nfcCommercePhoto figcaption strong{
+  max-width:540px;
+  font-size:clamp(1.55rem,3.2vw,3.25rem);
+  line-height:.96;
+  letter-spacing:-.04em;
+}
+.nfcCommerceCopy .epicEyebrow{color:var(--epic-gold)}
+.nfcCommerceCopy h2{
+  max-width:690px;
+  margin:20px 0 26px;
+  font-size:clamp(3rem,5.8vw,6.2rem);
+  line-height:.88;
+  letter-spacing:-.075em;
+  text-transform:uppercase;
+}
+.nfcCommerceCopy>p{
+  max-width:620px;
+  color:rgba(255,255,255,.62);
+  font-size:1.05rem;
+  line-height:1.75;
+}
+.nfcCommerceActions{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  margin:34px 0;
+  border-top:1px solid rgba(255,255,255,.22);
+  border-left:1px solid rgba(255,255,255,.22);
+}
+.nfcCommerceActions article{
+  min-height:132px;
+  display:grid;
+  align-content:start;
+  gap:8px;
+  padding:16px;
+  border-right:1px solid rgba(255,255,255,.22);
+  border-bottom:1px solid rgba(255,255,255,.22);
+}
+.nfcCommerceActions span{
+  color:var(--epic-pink);
+  font:900 8px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+.nfcCommerceActions strong{font-size:.95rem}
+.nfcCommerceActions small{
+  color:rgba(255,255,255,.45);
+  line-height:1.45;
+}
+.nfcCommerceCta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+  min-height:58px;
+  padding:0 18px;
+  border:1px solid var(--epic-gold);
+  background:var(--epic-gold);
+  color:#080808;
+  font-weight:950;
+  box-shadow:7px 7px 0 var(--epic-pink);
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+}
+.nfcCommerceCta:hover{
+  background:#fff3bf;
+  transform:translate(3px,3px);
+  box-shadow:3px 3px 0 var(--epic-pink);
+}
+.nfcCommerceCredit{
+  display:block;
+  margin-top:24px;
+  color:rgba(255,255,255,.34);
+  font-size:.67rem;
+}
+.nfcCommerceCredit a{
+  color:rgba(255,255,255,.6);
+  text-decoration:underline;
+}
+
+/* Solid diagnostic CTA */
+.cta .diagnosticCta{
+  min-width:min(100%,285px);
+  justify-content:space-between;
+  gap:28px;
+  padding:18px 21px;
+  border:1px solid #080808;
+  border-radius:0;
+  background:var(--epic-gold);
+  color:#080808;
+  box-shadow:8px 8px 0 var(--epic-cyan);
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+}
+.cta .diagnosticCta:hover{
+  background:#fff2bd;
+  transform:translate(3px,3px);
+  box-shadow:3px 3px 0 var(--epic-pink);
+}
+.diagnosticCta>span{
+  font-size:1.15rem;
+}
+
+@keyframes nfc-v3-route{
+  0%{left:0;opacity:0}
+  18%{opacity:1}
+  82%{opacity:1}
+  100%{left:100%;opacity:0}
+}
+@keyframes nfc-v3-pulse{
+  0%{opacity:.85;scale:.45}
+  100%{opacity:0;scale:2.15}
+}
+@keyframes nfc-v3-packet{
+  0%{left:36%;opacity:0;translate:0 7px}
+  24%{opacity:1}
+  76%{opacity:1}
+  100%{left:64%;opacity:0;translate:0 -7px}
+}
+
+@media(max-width:1100px){
+  .nfcFormatGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nfcCommerceLabGrid{grid-template-columns:1fr;gap:58px}
+  .nfcCommercePhoto{min-height:620px}
+}
+
+@media(max-width:650px){
+  .brandLockup{gap:9px}
+  .brandLockup-compact .brandLockupName{font-size:22px}
+  .brandLockup-compact .brandLockupCompany{font-size:7px}
+  .nfcSignalDemoV3{box-shadow:7px 7px 0 var(--epic-gold)}
+  .nfcPhotoStage{aspect-ratio:1 / 1.08}
+  .nfcPhotoStage .nfcStageLabel{top:11px;padding:6px;font-size:5px}
+  .nfcPhotoStage .label-object{left:10px}
+  .nfcPhotoStage .label-device{right:10px}
+  .nfcCardProbe{left:5%;bottom:21%;font-size:5px}
+  .nfcPhoneProbe{right:4%;top:28%;font-size:5px}
+  .nfcPhotoTapZone{width:49px;height:49px}
+  .nfcLiveResult{right:3%;bottom:4%;width:48%;padding:10px}
+  .nfcLiveResult>strong{font-size:.68rem}
+  .nfcLiveResult>small{font-size:5.5px}
+  .nfcPhotoStage .nfcStageCoordinates{left:10px;bottom:11px;font-size:5px}
+  .nfcFormatGrid{grid-template-columns:1fr}
+  .nfcFormatCard{min-height:540px}
+  .formatObjectPhoto{height:330px}
+  .nfcCommerceLab{padding:84px 0}
+  .nfcCommercePhoto{min-height:520px;box-shadow:8px 8px 0 var(--epic-cyan)}
+  .nfcCommercePhoto figcaption{left:18px;right:18px;bottom:18px}
+  .nfcCommerceCopy h2{font-size:clamp(3rem,15vw,5.1rem)}
+  .nfcCommerceActions{grid-template-columns:1fr}
+  .nfcCommerceActions article{min-height:108px}
+  .nfcCommerceCta{width:calc(100% - 7px)}
+  .cta .diagnosticCta{width:calc(100% - 8px);min-width:0}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .nfcStageProductPhoto,
+  .formatObjectPhoto img,
+  .nfcCommercePhoto img{
+    transform:none!important;
+  }
+  .nfcPhotoRoute i,
+  .nfcPhotoTapZone i,
+  .nfcPhotoPacket{
+    animation:none!important;
+  }
+}
