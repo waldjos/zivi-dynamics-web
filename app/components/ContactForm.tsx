@@ -16,8 +16,9 @@ export function ContactForm() {
       const response = await fetch("/api/contacto", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(Object.fromEntries(new FormData(form).entries())) });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "No pudimos procesar la solicitud.");
+      setFallbackUrl(result.whatsappUrl);
       if (result.delivered) { setState("sent"); form.reset(); }
-      else { setFallbackUrl(result.whatsappUrl); setState("fallback"); }
+      else { setState("fallback"); }
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Ocurrió un error inesperado.");
       setState("error");
@@ -34,8 +35,8 @@ export function ContactForm() {
     <label className="form-honeypot" aria-hidden="true">Sitio web<input name="website" tabIndex={-1} autoComplete="off"/></label>
     <label className="form-consent"><input type="checkbox" required/><span>Acepto que Zivi Dynamics utilice estos datos para responder mi solicitud, conforme a la política de privacidad.</span></label>
     <button className="btn form-submit" type="submit" disabled={state === "sending"}>{state === "sending" ? "Procesando solicitud…" : "Enviar solicitud"}</button>
-    {state === "sent" && <p className="form-status success">✓ Solicitud enviada. Te contactaremos utilizando los datos suministrados.</p>}
-    {state === "fallback" && <div className="form-fallback"><p>El correo automático todavía no está activado. Tu solicitud quedó preparada para enviarse por WhatsApp.</p><a className="btn secondary" href={fallbackUrl} target="_blank" rel="noreferrer">Continuar en WhatsApp</a></div>}
+    {state === "sent" && <div className="form-fallback"><p className="form-status success">✓ Solicitud enviada. Te contactaremos utilizando los datos suministrados.</p><p>Si prefieres una respuesta más rápida, continúa por WhatsApp.</p><a className="btn secondary" href={fallbackUrl} target="_blank" rel="noreferrer">Continuar en WhatsApp</a></div>}
+    {state === "fallback" && <div className="form-fallback"><p>Tu solicitud quedó lista con todos los datos. Continúa por WhatsApp para enviarla.</p><a className="btn secondary" href={fallbackUrl} target="_blank" rel="noreferrer">Continuar en WhatsApp</a></div>}
     {state === "error" && <p className="form-status error">{message}</p>}
   </form>;
 }
