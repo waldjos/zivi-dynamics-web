@@ -134,4 +134,6 @@ html,body{max-width:100%;overflow-x:hidden}
   .mobile-actions{bottom:calc(10px + env(safe-area-inset-bottom))!important;width:calc(100% - 20px)!important;max-width:390px!important;padding:5px!important;border-radius:16px!important}
   .mobile-actions a{min-height:44px!important;font-size:11px!important}
   .footer{padding-bottom:calc(100px + env(safe-area-inset-bottom))!important}
+  .footer a{display:flex!important;align-items:center!important;min-height:44px!important;margin:0!important}
+  .sectionFootLink a,.founderCard a,.positioning-section article>a{display:inline-flex!important;align-items:center!important;min-height:44px!important}
 }
