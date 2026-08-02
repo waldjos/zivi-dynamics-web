@@ -23,10 +23,18 @@ export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return NextResponse.json({ ok: true, delivered: false, whatsappUrl });
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ from: process.env.CONTACT_FROM_EMAIL || "Zivi Web <onboarding@resend.dev>", to: [process.env.CONTACT_TO_EMAIL || "ziviagency@gmail.com"], reply_to: data.email, subject: `Nueva solicitud web: ${data.service} — ${data.name}`, text }),
-  });
-  return NextResponse.json({ ok: true, delivered: response.ok, whatsappUrl });
+  const subject = `Nueva solicitud web: ${data.service} — ${data.name}`.replace(/[\r\n]+/g, " ");
+  try {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ from: process.env.CONTACT_FROM_EMAIL || "Zivi Web <onboarding@resend.dev>", to: [process.env.CONTACT_TO_EMAIL || "ziviagency@gmail.com"], reply_to: data.email, subject, text }),
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!response.ok) console.error("contacto: resend respondió", response.status, await response.text().catch(() => ""));
+    return NextResponse.json({ ok: true, delivered: response.ok, whatsappUrl });
+  } catch (error) {
+    console.error("contacto: no se pudo enviar por resend", error);
+    return NextResponse.json({ ok: true, delivered: false, whatsappUrl });
+  }
 }
