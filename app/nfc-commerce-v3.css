@@ -688,7 +688,7 @@
 @media(max-width:650px){
   .brandLockup{gap:9px}
   .brandLockup-compact .brandLockupName{font-size:22px}
-  .brandLockup-compact .brandLockupCompany{font-size:7px}
+  .brandLockup-compact .brandLockupCompany{font-size:10px}
   .nfcSignalDemoV3{box-shadow:7px 7px 0 var(--epic-gold)}
   .nfcPhotoStage{aspect-ratio:1 / 1.08}
   .nfcPhotoStage .nfcStageLabel{top:11px;padding:6px;font-size:5px}

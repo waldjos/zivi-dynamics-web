@@ -68,7 +68,7 @@
 }
 .brandLockup-compact .brandLockupCompany{
   margin-top:2px;
-  font-size:9px;
+  font-size:10px;
   letter-spacing:.04em;
 }
 
@@ -147,7 +147,7 @@
     font-size:26px;
   }
   .brandLockup-compact .brandLockupCompany{
-    font-size:8px;
+    font-size:10px;
   }
   .brandAsset .brandLockup-full,
   .about-brand-panel>.brandLockup-full{
@@ -172,7 +172,7 @@
     font-size:24px;
   }
   .brandLockup-compact .brandLockupCompany{
-    font-size:7.5px;
+    font-size:10px;
   }
   .brandAsset .brandLockup-full,
   .about-brand-panel>.brandLockup-full{
@@ -218,6 +218,6 @@
     font-size:22px;
   }
   .brandLockup-compact .brandLockupCompany{
-    font-size:7px;
+    font-size:10px;
   }
 }

@@ -481,7 +481,7 @@ main :where(h1,h2,h3,blockquote){
   max-width:100%;
   overflow-wrap:break-word;
   word-break:normal;
-  hyphens:auto;
+  hyphens:manual;
   text-wrap:balance;
 }
 .institutionNameGrid div{grid-template-columns:35px minmax(0,1fr)}

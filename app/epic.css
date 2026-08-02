@@ -1722,6 +1722,7 @@ body{
 }
 .nfcDemoSequence{display:flex;gap:5px;margin-left:auto}
 .nfcDemoSequence button{
+  position:relative;
   width:22px;
   height:3px;
   padding:0;
@@ -1730,6 +1731,7 @@ body{
   cursor:pointer;
   transition:background .25s ease,width .25s ease;
 }
+.nfcDemoSequence button::after{content:"";position:absolute;inset:-21px -2px}
 .nfcDemoSequence button.active{width:34px;background:var(--epic-gold);box-shadow:0 0 10px rgba(255,181,27,.6)}
 .nfcDemoSequence button.complete{background:var(--epic-cyan)}
 .nfcDemoTop>i{margin-left:3px}
