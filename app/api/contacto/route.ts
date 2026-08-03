@@ -3,7 +3,23 @@ import { NextResponse } from "next/server";
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const clean = (value: unknown, max = 2000) => typeof value === "string" ? value.trim().slice(0, max) : "";
 
+const WINDOW_MS = 60000;
+const MAX_HITS = 5;
+const hits = new Map<string, number[]>();
+
+function rateLimited(ip: string) {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((time) => now - time < WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 1000) for (const [key, times] of hits) if (!times.some((time) => now - time < WINDOW_MS)) hits.delete(key);
+  return recent.length > MAX_HITS;
+}
+
 export async function POST(request: Request) {
+  const ip = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "desconocida";
+  if (rateLimited(ip)) return NextResponse.json({ error: "Demasiadas solicitudes seguidas. Espera un minuto e inténtalo de nuevo." }, { status: 429 });
+
   let payload: Record<string, unknown>;
   try { payload = await request.json(); }
   catch { return NextResponse.json({ error: "Solicitud inválida." }, { status: 400 }); }
@@ -19,14 +35,5 @@ export async function POST(request: Request) {
   }
 
   const text = ["Hola Zivi Dynamics, deseo solicitar una cotización.","",`Nombre: ${data.name}`,`Empresa: ${data.company || "No indicada"}`,`Correo: ${data.email}`,`Teléfono: ${data.phone}`,`Tipo de proyecto: ${data.service}`,`Presupuesto: ${data.budget || "Por definir"}`,`Inicio estimado: ${data.startDate || "Por definir"}`,`Descripción: ${data.message}`].join("\n");
-  const whatsappUrl = `https://wa.me/584127065848?text=${encodeURIComponent(text)}`;
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return NextResponse.json({ ok: true, delivered: false, whatsappUrl });
-
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ from: process.env.CONTACT_FROM_EMAIL || "Zivi Web <onboarding@resend.dev>", to: [process.env.CONTACT_TO_EMAIL || "ziviagency@gmail.com"], reply_to: data.email, subject: `Nueva solicitud web: ${data.service} — ${data.name}`, text }),
-  });
-  return NextResponse.json({ ok: true, delivered: response.ok, whatsappUrl });
+  return NextResponse.json({ ok: true, whatsappUrl: `https://wa.me/584127065848?text=${encodeURIComponent(text)}` });
 }
