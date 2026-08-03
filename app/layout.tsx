@@ -95,7 +95,7 @@ const organization = {
     addressCountry: "VE",
   },
   sameAs: [
-    "https://www.instagram.com/zividynamics",
+    "https://www.instagram.com/zivi.ve",
     "https://linktr.ee/Zividynamics",
   ],
   founder: {
@@ -148,7 +148,7 @@ export default function RootLayout({
               </a>
               <a href="https://wa.me/584127065848">+58 412 706 5848 ↗</a>
               <a href="mailto:ziviagency@gmail.com">ziviagency@gmail.com</a>
-              <a href="https://instagram.com/zividynamics">@zividynamics ↗</a>
+              <a href="https://www.instagram.com/zivi.ve">@zivi.ve ↗</a>
               <p>RIF: J-508175123</p>
               <Link href="/politica-de-privacidad">Privacidad</Link>
               <Link href="/terminos-y-condiciones">Términos</Link>
