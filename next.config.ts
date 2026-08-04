@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
   poweredByHeader:false,
   reactStrictMode:true,
   compress:true,
-  images:{ qualities:[75,100] },
+  images:{ qualities:[75,96,100] },
   async headers(){ return [{source:"/(.*)",headers:securityHeaders}]; },
 };
 

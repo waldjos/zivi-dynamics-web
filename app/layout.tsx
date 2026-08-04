@@ -56,18 +56,11 @@ export const metadata: Metadata = {
     siteName: "Zivi Dynamics C.A.",
     title: "Zivi Dynamics — Software que mueve organizaciones",
     description: "Productos digitales, IA y NFC construidos para operar en el mundo real.",
-    images: [{
-      url: "/og.png",
-      width: 1731,
-      height: 909,
-      alt: "Zivi Dynamics — Software, inteligencia artificial y NFC",
-    }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Zivi Dynamics",
     description: "Software que mueve organizaciones. NFC que conecta el mundo físico.",
-    images: ["/og.png"],
   },
   icons: {
     icon: [{ url: "/brand/zivi-app-icon-real-v2.png", sizes: "1024x1024", type: "image/png" }],
@@ -85,7 +78,7 @@ const organization = {
   taxID: "J-508175123",
   url: siteUrl,
   logo: `${siteUrl}/brand/zivi-mark-real-v2.png`,
-  image: `${siteUrl}/og.png`,
+  image: `${siteUrl}/opengraph-image`,
   email: "ziviagency@gmail.com",
   telephone: "+58 412 706 5848",
   address: {
